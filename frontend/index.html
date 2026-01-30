@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="KNCET Hackathon 2025 - Register for a 24-hour coding competition. Showcase your skills and win amazing prizes!">
+    <meta name="theme-color" content="#00d4ff">
+    <title>KNCET Hackathon 2025 - Registration Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="introOverlay" class="intro-overlay" role="dialog" aria-label="Intro video" aria-hidden="false">
+        <video id="introVideo" class="intro-video" autoplay muted playsinline>
+            <source src="media/intro_sequence_remix.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <button id="skipIntroBtn" class="skip-btn" aria-label="Skip intro">Skip</button>
+    </div>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="header" role="banner">
+            <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+                <source src="media/intro_sequence_remix.webm" type="video/webm">
+            </video>
+            <div class="header-content">
+                <h1>KONGUNADU ENGINEERING COLLEGE<br>Tezario 2026</h1>
+                <h2>Department of Information Technology</h2>
+
+                <!-- Hero Stats -->
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <div class="stat-box-icon">📅</div>
+                        <div class="stat-box-label">Feb 13-14, 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-icon">⏱️</div>
+                        <div class="stat-box-label">24 Hours</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-icon">📍</div>
+                        <div class="stat-box-label">IT Lab</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-icon">💰</div>
+                        <div class="stat-box-label">₹50,000+ Prizes</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Registration Form Section -->
+            <section class="registration-section" aria-labelledby="registration-heading">
+                <div class="card">
+                    <h3 id="registration-heading">Student Registration Form</h3>
+                    <form id="registrationForm" class="registration-form" method="POST">
+                        <input type="hidden" id="eventName" name="event" value="">
+                        <div class="form-group">
+                            <label for="name">Full Name <span aria-label="required">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name"
+                                autocomplete="name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address <span aria-label="required">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="example@email.com"
+                                    autocomplete="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span aria-label="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required placeholder="10 digit number"
+                                    maxlength="10" autocomplete="tel">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rollNumber">Roll Number <span aria-label="required">*</span></label>
+                                <input type="text" id="rollNumber" name="rollNumber" required
+                                    placeholder="Enter roll number" autocomplete="off">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="year">Year <span aria-label="required">*</span></label>
+                                <select id="year" name="year" required>
+                                    <option value="">Select Year</option>
+                                    <option value="I">First Year</option>
+                                    <option value="II">Second Year</option>
+                                    <option value="III">Third Year</option>
+                                    <option value="IV">Fourth Year</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department <span aria-label="required">*</span></label>
+                            <select id="department" name="department" required>
+                                <option value="">Select Department</option>
+                                <option value="Computer Science and Engineering">Computer Science and Engineering
+                                </option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Electronics and Communication Engineering">Electronics and Communication
+                                    Engineering</option>
+                                <option value="Electrical and Electronics Engineering">Electrical and Electronics
+                                    Engineering</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Automobile Engineering">Automobile Engineering</option>
+                                <option value="Aeronautical Engineering">Aeronautical Engineering</option>
+                                <option value="Biomedical Engineering">Biomedical Engineering</option>
+                                <option value="Biotechnology">Biotechnology</option>
+                                <option value="Chemical Engineering">Chemical Engineering</option>
+                                <option value="Food Technology">Food Technology</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="teamName">Team Name <span aria-label="required">*</span></label>
+                            <input type="text" id="teamName" name="teamName" required placeholder="Enter team name"
+                                autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" aria-label="Submit registration form">Register for
+                            Hackathon</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="stats-section" aria-labelledby="stats-heading">
+                <div class="card">
+                    <h3 id="stats-heading">Registration Statistics</h3>
+                    <div class="stats-grid" id="statsGrid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalRegistrations">0</div>
+                            <div class="stat-label">Total Registrations</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="departmentCount">0</div>
+                            <div class="stat-label">Departments</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <p>&copy; 2025 Kongunadu College of Engineering and Technology. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Modal for notifications -->
+    <div id="modal" class="modal" role="dialog" aria-labelledby="modalMessage" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" aria-label="Close notification">&times;</span>
+            <div id="modalMessage"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Featured Events - Cybernautix / KEC Engineering College">
+    <title>Featured Events — KEC</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-lighter);
+        }
+
+        .back-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-btn {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back-nav">
+        <a href="events.html" class="back-btn">← Back to Overview</a>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Featured Events</h1>
+            <p>Discover our lineup of technical and non-technical challenges</p>
+        </div>
+
+        <main class="main-content">
+            <section class="card" aria-labelledby="events-heading"
+                style="background: transparent; border: none; box-shadow: none; padding: 0;">
+                <div class="events-grid">
+                    <!-- Event 1 -->
+                    <a href="index.html?event=Hackathon" class="event-card" aria-label="Register for Hackathon">
+                        <h4>Hackathon</h4>
+                        <div class="event-meta">
+                            <span>💻 Coding</span>
+                            <span>👥 Team of 4</span>
+                            <span>🕒 24 Hours</span>
+                        </div>
+                        <p>Unleash your coding potential in this 24-hour intense hackathon. Build, ship, and win amazing
+                            prizes while solving real-world problems.</p>
+                        <div class="event-action">
+                            Register Now <span>→</span>
+                        </div>
+                    </a>
+
+                    <!-- Event 2 -->
+                    <a href="index.html?event=UI%2FUX%20Design" class="event-card"
+                        aria-label="Register for UI/UX Challenge">
+                        <h4>UI/UX Challenge</h4>
+                        <div class="event-meta">
+                            <span>🎨 Design</span>
+                            <span>👤 Individual</span>
+                            <span>🕒 4 Hours</span>
+                        </div>
+                        <p>Design an interactive and beautiful prototype for a real-world problem statement. Show off
+                            your creativity and user empathy.</p>
+                        <div class="event-action">
+                            Register Now <span>→</span>
+                        </div>
+                    </a>
+
+                    <!-- Event 3 -->
+                    <a href="index.html?event=AI%2FML%20Workshop" class="event-card"
+                        aria-label="Register for AI/ML Workshop">
+                        <h4>AI/ML Workshop</h4>
+                        <div class="event-meta">
+                            <span>🤖 AI/ML</span>
+                            <span>🎓 Workshop</span>
+                            <span>🕒 1 Day</span>
+                        </div>
+                        <p>Hands-on workshop covering modern machine learning tools, neural networks, and generative AI
+                            workflows. Perfect for beginners and pros.</p>
+                        <div class="event-action">
+                            Register Now <span>→</span>
+                        </div>
+                    </a>
+
+                    <!-- Event 4 -->
+                    <a href="index.html?event=Cyber%20Games" class="event-card" aria-label="Register for Cyber Games">
+                        <h4>Cyber Games</h4>
+                        <div class="event-meta">
+                            <span>🔒 Security</span>
+                            <span>👥 Team of 2</span>
+                            <span>🕒 6 Hours</span>
+                        </div>
+                        <p>Capture the Flag (CTF) and security challenges. Test your skills in cryptography, reverse
+                            engineering, and web security.</p>
+                        <div class="event-action">
+                            Register Now <span>→</span>
+                        </div>
+                    </a>
+
+                    <!-- Event 5 -->
+                    <a href="index.html?event=Paper%20Presentation" class="event-card"
+                        aria-label="Register for Paper Presentation">
+                        <h4>Paper Presentation</h4>
+                        <div class="event-meta">
+                            <span>📄 Research</span>
+                            <span>👥 Team of 2</span>
+                            <span>🕒 15 Mins</span>
+                        </div>
+                        <p>Present your innovative ideas and research papers on emerging technologies before a panel of
+                            industry experts.</p>
+                        <div class="event-action">
+                            Register Now <span>→</span>
+                        </div>
+                    </a>
+
+                    <!-- Event 6 -->
+                    <a href="index.html?event=Gaming%20Tournament" class="event-card"
+                        aria-label="Register for Gaming Tournament">
+                        <h4>Gaming Arena</h4>
+                        <div class="event-meta">
+                            <span>🎮 Gaming</span>
+                            <span>👥 Squad</span>
+                            <span>🕒 3 Hours</span>
+                        </div>
+                        <p>Battle it out in popular titles like Valorant and BGMI. unexpected strategies and pure skill
+                            will win the day.</p>
+                        <div class="event-action">
+                            Register Now <span>→</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="card" style="margin-top:60px;" aria-labelledby="info-heading">
+                <h3 id="info-heading">Event Details</h3>
+                <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; text-align: center;">
+                    <div>
+                        <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">📅 Date</div>
+                        <div style="font-size: 1.1rem;">Feb 13–14, 2026</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">📍 Location</div>
+                        <div style="font-size: 1.1rem;">IT Department Block, KEC</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">📧 Contact</div>
+                        <div style="font-size: 1.1rem;">contact@kec-hackathon.edu</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">© 2026 KEC. All rights reserved.</footer>
+    </div>
+</body>
+
+</html>
