@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const { appendStudentToSheet } = require('./sheets');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -42,8 +43,15 @@ setTimeout(() => {
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // Ensure data directory exists
 const dataDir = path.dirname(DATA_FILE);
@@ -99,16 +107,38 @@ app.get('/api/students', (req, res) => {
 // Register a new student
 app.post('/api/register', (req, res) => {
   (async () => {
-    console.log('POST /api/register called - body:', req.body);
+    console.log('POST /api/register called');
     try {
-      const { name, email, phone, department, year, rollNumber, teamName, event } = req.body;
+      const { name, email, phone, department, year, rollNumber, accommodation, teamName, teamSize, teamMembers, domain, problemStatement, event, abstractFile } = req.body;
 
       // Validation
-      if (!name || !email || !phone || !department || !year || !rollNumber || !teamName) {
+      if (!name || !email || !phone || !department || !year || !rollNumber || !teamName || !domain || !problemStatement) {
         return res.status(400).json({
           success: false,
-          error: 'All fields are required (name, email, phone, department, year, rollNumber, teamName)'
+          error: 'All fields are required (name, email, phone, department, year, rollNumber, accommodation, teamName, domain, problemStatement)'
         });
+      }
+
+      // Handle File Upload (Base64)
+      let abstractFilePath = null;
+      if (abstractFile && abstractFile.data) {
+        // abstractFile = { name: "filename.pdf", type: "application/pdf", data: "base64string..." }
+        const matches = abstractFile.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+
+        if (matches && matches.length === 3) {
+          const buffer = Buffer.from(matches[2], 'base64');
+          const uniqueFilename = `${Date.now()}_${abstractFile.name.replace(/[^a-z0-9.]/gi, '_')}`;
+          const targetPath = path.join(uploadsDir, uniqueFilename);
+
+          try {
+            fs.writeFileSync(targetPath, buffer);
+            abstractFilePath = `/uploads/${uniqueFilename}`;
+            console.log(`Saved abstract file via Base64 to ${targetPath}`);
+          } catch (err) {
+            console.error('Error saving file:', err);
+            // Continue without file if save fails
+          }
+        }
       }
 
       // Email validation
@@ -141,13 +171,23 @@ app.post('/api/register', (req, res) => {
           department: department,
           year: year,
           rollNumber: rollNumber.trim(),
+          accommodation: accommodation,
           teamName: teamName.trim(),
+          teamSize: teamSize || 1,
+          teamMembers: teamMembers || [],
+          domain: domain,
+          problemStatement: problemStatement,
           event: event ? event.trim() : 'General',
+          abstractFile: abstractFilePath,
           registeredAt: new Date()
         };
 
         const result = await studentsCollection.insertOne(newStudent);
         newStudent.id = result.insertedId.toString();
+
+        // Async: Append to Google Sheets (Fire and Forget)
+        appendStudentToSheet(newStudent).catch(err => console.error('Sheet append error:', err));
+
         return res.status(201).json({ success: true, message: 'Student registered successfully', data: newStudent });
       }
 
@@ -175,13 +215,22 @@ app.post('/api/register', (req, res) => {
         department: department,
         year: year,
         rollNumber: rollNumber.trim(),
+        accommodation: accommodation,
         teamName: teamName ? teamName.trim() : '',
+        teamSize: teamSize || 1,
+        teamMembers: teamMembers || [],
+        domain: domain,
+        problemStatement: problemStatement,
         event: event ? event.trim() : 'General',
+        abstractFile: abstractFilePath,
         registeredAt: new Date().toISOString()
       };
 
       students.push(newStudent);
       writeStudents(students);
+
+      // Async: Append to Google Sheets (Fire and Forget)
+      appendStudentToSheet(newStudent).catch(err => console.error('Sheet append error:', err));
 
       return res.status(201).json({ success: true, message: 'Student registered successfully', data: newStudent });
     } catch (error) {
@@ -273,9 +322,9 @@ app.get('/api/stats', (req, res) => {
 
       students.forEach(student => {
         // Count by department
-        stats.byDepartment[student.department] = 
+        stats.byDepartment[student.department] =
           (stats.byDepartment[student.department] || 0) + 1;
-        
+
         // Count by year
         stats.byYear[student.year] = (stats.byYear[student.year] || 0) + 1;
       });

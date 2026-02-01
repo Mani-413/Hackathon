@@ -1,0 +1,261 @@
+/* Timeline Section */
+.timeline-section {
+    margin-bottom: 80px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 40px 0;
+}
+
+/* Vertical Line */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: linear-gradient(180deg, transparent, var(--primary), var(--secondary), transparent);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item {
+    padding: 10px 50px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+    padding-right: 50px;
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+    padding-left: 50px;
+    animation-delay: 0.3s;
+}
+
+/* Dots */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: -12px;
+    background-color: var(--darker-bg);
+    border: 3px solid var(--primary);
+    top: 20px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -12px;
+}
+
+.timeline-item:hover::after {
+    background-color: var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+    transform: scale(1.2);
+}
+
+/* Arrows */
+.timeline-date {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 20px;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.timeline-content {
+    padding: 25px;
+    background: rgba(30, 41, 59, 0.4);
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.7);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.timeline-content h4 {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.timeline-content p {
+    color: var(--text-lighter);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- UNIQUE FEATURED TIMELINE STYLES --- */
+.featured-timeline .timeline-container::after {
+    background: linear-gradient(180deg, transparent, #00d4ff, #a855f7, #ec4899, #ef4444, transparent);
+    width: 6px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.featured-timeline .timeline-item::after {
+    border-radius: 0;
+    transform: rotate(45deg);
+    background-color: #000;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+}
+
+.featured-timeline .timeline-item:nth-child(even)::after {
+    left: -10px;
+}
+
+.featured-timeline .timeline-item:hover::after {
+    transform: rotate(225deg) scale(1.3);
+    background-color: #000;
+}
+
+.featured-timeline .timeline-content {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.featured-timeline .timeline-content h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* INDIVIDUAL ITEM COLORS - Vaporwave Gradient */
+/* Item 1: Vivid Sky Blue */
+.featured-timeline .timeline-item:nth-child(1) {
+    --item-color: #4CC9F0;
+}
+
+/* Item 2: Electric Azure */
+.featured-timeline .timeline-item:nth-child(2) {
+    --item-color: #4895EF;
+}
+
+/* Item 3: Neon Blue */
+.featured-timeline .timeline-item:nth-child(3) {
+    --item-color: #4361EE;
+}
+
+/* Item 4: Deep Indigo */
+.featured-timeline .timeline-item:nth-child(4) {
+    --item-color: #3F37C9;
+}
+
+/* Item 5: Electric Purple */
+.featured-timeline .timeline-item:nth-child(5) {
+    --item-color: #7209B7;
+}
+
+/* Item 6: Radioactive Pink */
+.featured-timeline .timeline-item:nth-child(6) {
+    --item-color: #F72585;
+}
+
+/* Apply variable colors */
+.featured-timeline .timeline-item::after {
+    border-color: var(--item-color);
+    box-shadow: 0 0 15px var(--item-color);
+}
+
+.featured-timeline .timeline-item:hover::after {
+    background-color: var(--item-color);
+    box-shadow: 0 0 30px var(--item-color);
+}
+
+.featured-timeline .timeline-content {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--item-color);
+    /* Colorful left border */
+}
+
+.featured-timeline .timeline-content:hover {
+    border-color: var(--item-color);
+    box-shadow: 0 0 30px var(--item-color), inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.featured-timeline .timeline-date {
+    color: var(--item-color);
+    border-color: var(--item-color);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.featured-timeline .timeline-content h4 {
+    color: var(--item-color);
+    text-shadow: 0 0 15px var(--item-color);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .timeline-container::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) {
+        text-align: left;
+        padding-right: 0;
+        padding-left: 80px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline-item::after {
+        left: 19px;
+    }
+
+    .timeline-item:nth-child(even)::after {
+        left: 19px;
+    }
+
+    /* Unique Responsive Override */
+    .featured-timeline .timeline-item::after {
+        left: 21px;
+    }
+
+    .featured-timeline .timeline-item:nth-child(even)::after {
+        left: 21px;
+    }
+}

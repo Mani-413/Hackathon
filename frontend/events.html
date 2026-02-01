@@ -4,22 +4,291 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Events - Cybernautix / RMK Engineering College">
-  <title>Events — R.M.K. Engineering College</title>
+  <meta name="description" content="Events - Tezario 2026 / kongunadu College">
+  <title>Events — kongunadu college of Engineering and Technology</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    /* Unify Fonts & Cyber Background */
+    body {
+      background-color: #020205;
+      font-family: 'Space Grotesk', sans-serif;
+      /* Cleaner, tech look */
+      color: #e2e8f0;
+      /* Cyber Grid Background */
+      background-image:
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      background-attachment: fixed;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .countdown-value {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      font-family: 'Syncopate', sans-serif;
+      /* Wide, futuristic font */
+    }
+
+    p,
+    .info-sub,
+    .reg-value,
+    .btn {
+      font-family: 'Space Grotesk', sans-serif;
+      /* Consistent tech font */
+    }
+
+    /* Hero Title Styling */
+    .hero-title {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 3.5rem !important;
+      /* Slightly smaller as Syncopate is wide */
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      /* Wider spacing */
+      margin: 15px 0;
+      background: none;
+      -webkit-text-fill-color: #ffffff;
+      color: #ffffff;
+      text-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    /* Countdown Styling */
+    .countdown-item {
+      background: rgba(15, 23, 42, 0.4);
+      padding: 15px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      min-width: 80px;
+    }
+
+    .countdown-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .countdown-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent);
+      /* Orange/Gold from theme */
+      text-shadow: 0 0 15px var(--accent-glow);
+      line-height: 1.2;
+    }
+
+    .countdown-label {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 5px;
+      font-weight: 700;
+    }
+
+    /* Header Text Unification */
+    .header-content h1 {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      font-family: 'Syncopate', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .header-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1.5px;
+    }
+
+    /* Ensure buttons match */
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Page Transition Overlay -->
+  <div id="pageTransition"
+    style="position:fixed; inset:0; background:black; z-index:10000; pointer-events:none; animation: pageReveal 0.5s ease-out forwards;">
+  </div>
+  <style>
+    @keyframes pageReveal {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  </style>
+
   <div class="container">
-    <header class="header" role="banner">
+    <header class="header" role="banner" style="padding-bottom: 40px;">
       <div class="header-content">
-        <h1>KONGUNADU ENGINEERING COLLEGE</h1>
-        <div style="margin-top:20px; display: flex; gap: 15px; justify-content: center;">
-          <a class="btn btn-secondary" href="featured-events.html">Explore Events</a>
-        </div>
+        <h1 style="font-size: 2.2rem;"> kongunadu college of Engineering and Technology</h1>
+        <h1 style="font-size: 1.5rem; margin-top: 10px;">Department of Information Technology</h1>
+        <h2 style="font-size: 1.2rem; color: var(--text-light); opacity: 0.8;">Proudly Presents</h2>
+
+        <!-- Updated Title with Class -->
+        <h1 class="hero-title" style="font-size: 4rem !important;">Tezario 2026</h1>
+
+        <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--accent);">An Intra College Hackathon</h2>
+
+        <!-- Timer Section Moved Here -->
+        <section aria-label="Event Countdown" style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+          <div id="countdown" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <div class="countdown-item">
+              <div id="days" class="countdown-value">00</div>
+              <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+              <div id="hours" class="countdown-value">00</div>
+              <div class="countdown-label">Hrs</div>
+            </div>
+            <div class="countdown-item">
+              <div id="minutes" class="countdown-value">00</div>
+              <div class="countdown-label">Mins</div>
+            </div>
+            <div class="countdown-item">
+              <div id="seconds" class="countdown-value">00</div>
+              <div class="countdown-label">Secs</div>
+            </div>
+          </div>
+        </section>
+
+
       </div>
     </header>
     <main class="main-content">
+
+      <!-- Event Info Cards -->
+      <section class="info-section">
+        <h2 class="hero-title scroll-reveal"
+          style="font-size: 2.5rem !important; margin-bottom: 20px; background: none; -webkit-text-fill-color: #fff; text-shadow: none;">
+          Event <span style="color: var(--accent);">Info.</span></h2>
+
+        <div class="info-grid s">
+          <!-- Date Card -->
+          <div class="info-card scroll-reveal">
+            <div class="info-icon-wrapper">
+              <span class="material-symbols-outlined" style="font-size: 32px;">calendar_month</span>
+            </div>
+            <div class="info-label">The Date</div>
+            <div class="info-value">February 13, 2026</div>
+            <div class="info-sub">Friday</div>
+          </div>
+
+          <!-- Venue Card -->
+          <div class="info-card scroll-reveal"
+            style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);">
+            <div class="info-icon-wrapper" style="background: var(--accent); color: #000;">
+              <span class="material-symbols-outlined" style="font-size: 32px;">location_on</span>
+            </div>
+            <div class="info-label">The Venue</div>
+            <div class="info-value">IT Lab</div>
+            <div class="info-sub">kongunadu College of Engineering</div>
+            <div style="margin-top: 15px;">
+              <div
+                style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto; display:flex; align-items:center; justify-content:center;">
+                <span class="material-symbols-outlined text-muted">fingerprint</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Time Card -->
+          <div class="info-card scroll-reveal">
+            <div class="info-icon-wrapper">
+              <span class="material-symbols-outlined" style="font-size: 32px;">schedule</span>
+            </div>
+            <div class="info-label">The Time</div>
+            <div class="info-value">09:30 AM - 04:00 PM</div>
+            <div class="info-sub">Full Day</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Registration Details -->
+      <section class="info-section" style="padding-top: 0;">
+        <h2 class="hero-title scroll-reveal"
+          style="font-size: 2.5rem !important; margin-bottom: 30px; background: none; -webkit-text-fill-color: #fff; text-shadow: none;">
+          READY TO <span style="color: #fff;">EXHIBIT?</span></h2>
+
+        <div class="reg-details-box scroll-reveal">
+          <div class="reg-row">
+            <div class="reg-label">
+              <span class="material-symbols-outlined">groups</span>
+              TEAM SIZE
+            </div>
+            <div class="reg-value">2 - 5 Members</div>
+          </div>
+          <div class="reg-row">
+            <div class="reg-label">
+              <span class="material-symbols-outlined">restaurant</span>
+              INCLUSIONS
+            </div>
+            <div class="reg-value">Food & Refreshment Included</div>
+          </div>
+          <div class="reg-row">
+            <div class="reg-label">
+              <span class="material-symbols-outlined">emoji_events</span>
+              REWARDS
+            </div>
+            <div class="reg-value">
+              Certificates for All <span style="color:var(--accent); margin:0 10px;">|</span> Cash Prizes for Winners
+            </div>
+          </div>
+          <div class="reg-footer">
+            <span class="material-symbols-outlined" style="vertical-align: middle; font-size: 16px;">info</span>
+            FOR FURTHER INFO CONTACT <span style="color: #fff;">REGISTRATION TEAM</span>
+          </div>
+        </div>
+
+        <div class="scroll-reveal" style="margin-top: 30px;">
+          <div
+            style="color: var(--accent); font-weight: 700; margin-bottom: 10px; text-transform:uppercase; letter-spacing:1px;">
+            Registration Deadline: 12.02.2026</div>
+          <a href="featured-events.html" class="btn"
+            style="background: var(--accent); color: #000; font-weight: 800; padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; box-shadow: 0 0 25px var(--accent-glow);"
+            onclick="event.preventDefault(); document.getElementById('pageTransition').style.opacity='1'; setTimeout(()=>window.location.href='featured-events.html', 500);">
+            ENTRY EVENTS
+          </a>
+        </div>
+      </section>
 
     </main>
 
@@ -27,6 +296,43 @@
   </div>
 
   <script>
+    // Fix for Back Button (BFCache): Re-trigger animation if restored
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted || performance.navigation.type === 2) {
+        // Remove and re-add animation to restart it
+        const transition = document.getElementById('pageTransition');
+        if (transition) {
+          transition.style.animation = 'none';
+          transition.offsetHeight; /* trigger reflow */
+          transition.style.animation = 'pageReveal 0.5s ease-out forwards';
+        }
+      }
+    });
+
+    function updateCountdown() {
+      const eventDate = new Date('February 13, 2026 09:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<div class="countdown-value" style="font-size:1.2rem">EVENT STARTED!</div>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
     document.addEventListener('DOMContentLoaded', () => {
       // Accessibility focus
       const hero = document.querySelector('.events-hero');
@@ -35,6 +341,61 @@
         hero.focus();
       }
     });
+
+    // Scroll Animation Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Optional: Stop observing once visible
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+  <style>
+    #dotted-surface {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #020205;
+      /* Match existing dark bg */
+      pointer-events: none;
+    }
+  </style>
+
+  <!-- Container for Dotted Surface -->
+  <div id="dotted-surface"></div>
+
+  <!-- Import Map for Three.js -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://esm.sh/three@0.160.0"
+      }
+    }
+  </script>
+
+  <!-- Init Dotted Surface -->
+  <script type="module">
+    import { DottedSurface } from './dotted-surface.js';
+
+    const container = document.getElementById('dotted-surface');
+    if (container) {
+      new DottedSurface(container);
+    }
   </script>
 </body>
 

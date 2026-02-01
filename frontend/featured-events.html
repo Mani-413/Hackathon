@@ -1,197 +1,390 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Featured Events - Cybernautix / KEC Engineering College">
-    <title>Featured Events — KEC</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tezario 2026 - Hackathon Registration & Problem Hub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
     <style>
-        .page-header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.1);
-            margin-bottom: 40px;
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        .page-header h1 {
-            font-size: 3.5rem;
-            font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(135deg, #00d4ff, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        /* Scroll Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
 
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--text-lighter);
-        }
-
-        .back-nav {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-        }
-
-        .back-btn {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover {
-            background: rgba(0, 212, 255, 0.1);
-            border-color: var(--primary);
-            transform: translateX(-5px);
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
-<body>
-    <div class="back-nav">
-        <a href="events.html" class="back-btn">← Back to Overview</a>
-    </div>
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
 
-    <div class="container">
-        <div class="page-header">
-            <h1>Featured Events</h1>
-            <p>Discover our lineup of technical and non-technical challenges</p>
+            <main class="flex-1 flex flex-col items-center">
+                <div class="w-full max-w-[1280px] flex flex-col gap-8 py-8 lg:py-12">
+                    <section class="w-full px-4 lg:px-10">
+                        <div class="flex flex-col gap-8">
+                            <div class="flex flex-col gap-2">
+                                <h1
+                                    class="text-slate-900 dark:text-white text-4xl lg:text-5xl font-black tracking-tight">
+                                    Project Showcase &amp; Problem Hub</h1>
+                                <p class="text-slate-500 dark:text-[#92a4c9] text-lg">Your central hub for registration,
+                                    problem statements, and community innovation.</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                                <div
+                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg hover:shadow-primary/10 transition-all duration-300 reveal">
+                                    <div class="relative h-48 overflow-hidden bg-slate-900">
+                                        <img alt="Hackathon Registration"
+                                            class="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-500"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3s7A4ZghdC_begSTkpwG4E0Tj05Eh85MWqURy9wnwDKIwFtHdvQB8hbLX558taLl4Wn4oG27UxpYSjN4Oru8-QT_5ZW1aCH2SHecKvACHtxdRy1TSOnnaIcBLmv8FyYZioAcp3AoGQaB_3Jg-8sOw0uqq3KZLPgnidNb2MuFlVNr5p3_Xy9fVMbT_fILoqbuVQsCpaeONu7JYDVfFbBd1RZbfXnFPdU8WoJ32DaIwdafPCSvOrGzQafT_K1411dHO1YJAK6E2Dq4s" />
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <span
+                                                class="material-symbols-outlined text-white text-6xl">person_add</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-6 flex flex-col grow justify-between gap-4">
+                                        <div>
+                                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Register
+                                                for Hackathon</h3>
+                                            <p class="text-slate-500 dark:text-[#92a4c9] text-sm leading-relaxed">Join
+                                                innovators worldwide. Secure your spot today for Tezario 2026.</p>
+                                        </div>
+                                        <a href="index.html?event=Tezario%202026"
+                                            class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-blue-700 text-white py-4 rounded-xl text-lg font-bold shadow-lg shadow-primary/20 transition-all">
+                                            <span>Register Now</span>
+                                            <span class="material-symbols-outlined">rocket_launch</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div
+                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                                    <div class="p-6 flex flex-col h-full gap-4">
+                                        <div class="flex items-center gap-3 text-primary">
+                                            <span class="material-symbols-outlined text-3xl">code_blocks</span>
+                                            <h3 class="text-xl font-bold">Software Problems</h3>
+                                        </div>
+                                        <div class="flex flex-col gap-3">
+                                            <div
+                                                class="p-3 rounded-lg bg-slate-50 dark:bg-[#232f48] border-l-4 border-primary">
+                                                <p class="text-sm font-bold dark:text-white">AI-Powered Disaster
+                                                    Response</p>
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">Natural Language
+                                                    Processing Challenge</p>
+                                            </div>
+                                            <div
+                                                class="p-3 rounded-lg bg-slate-50 dark:bg-[#232f48] border-l-4 border-primary">
+                                                <p class="text-sm font-bold dark:text-white">Decentralized ID Protocol
+                                                </p>
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">Blockchain &amp;
+                                                    Security Challenge</p>
+                                            </div>
+                                            <div
+                                                class="p-3 rounded-lg bg-slate-50 dark:bg-[#232f48] border-l-4 border-primary">
+                                                <p class="text-sm font-bold dark:text-white">Real-time Data
+                                                    Visualization</p>
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">Frontend
+                                                    Performance Challenge</p>
+                                            </div>
+                                        </div>
+                                        <a href="software-problems.html"
+                                            class="mt-auto w-full py-2 text-primary font-bold text-sm flex items-center justify-center gap-2 hover:bg-primary/5 rounded-lg transition-colors">
+                                            View All Software Challenges
+                                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div
+                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg hover:shadow-primary/10 transition-all duration-300 reveal">
+                                    <div class="p-6 flex flex-col h-full gap-4">
+                                        <div class="flex items-center gap-3 text-orange-500">
+                                            <span
+                                                class="material-symbols-outlined text-3xl">precision_manufacturing</span>
+                                            <h3 class="text-xl font-bold">Hardware Problems</h3>
+                                        </div>
+                                        <div class="flex flex-col gap-3">
+                                            <div class="relative aspect-video rounded-xl overflow-hidden mb-2">
+                                                <img alt="Robotics Lab" class="object-cover w-full h-full"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Da5zPOyz6lIBz54GeQa-JwKM0TtMsgJ2sH9iwPomcWYb6q-kQmcAbNNXzV52Edg3pOr3RpVMFlBQ0P5pMsiLncrvEahoiOwh5yEbvvuhDGMqgOYJAldUGX2Y-XtGdYg7wbIA7AFFZgDeOp7cYGOOOLZGQOHRyTbgRiTJjBLK2yt8Hd_J9sBX_mX3xcRMw1tifqrgiBTvi_moIpZ0NUyNSqFjM0NBUM0LHkWOMiMEnqR2l9LUJji29C7GCYcRyXf5LJV-DzS_XosS" />
+                                                <div
+                                                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+                                                    <p class="text-white text-sm font-bold">Autonomous Robotics
+                                                        Challenge</p>
+                                                    <p class="text-white/70 text-[10px] uppercase tracking-wider">
+                                                        Engineering Focus</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3 p-2">
+                                                <span class="material-symbols-outlined text-orange-500">sensors</span>
+                                                <div>
+                                                    <p class="text-sm font-bold dark:text-white">Edge Computing Nodes
+                                                    </p>
+                                                    <p class="text-xs text-slate-500">IoT Connectivity &amp; Power
+                                                        Optimization</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="hardware-problems.html"
+                                            class="mt-auto w-full py-2 text-orange-500 font-bold text-sm flex items-center justify-center gap-2 hover:bg-orange-500/5 rounded-lg transition-colors">
+                                            Explore Hardware Tracks
+                                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 px-4 lg:px-10 mt-6">
+                        <div class="lg:col-span-8 flex flex-col gap-10">
+                            <section class="reveal">
+                                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Prizes &amp; Official
+                                    Sponsors</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div
+                                        class="flex flex-col p-6 bg-primary text-white rounded-xl shadow-xl relative overflow-hidden group">
+                                        <div
+                                            class="absolute -right-4 -top-4 opacity-10 group-hover:rotate-12 transition-transform">
+                                            <span class="material-symbols-outlined text-9xl">workspace_premium</span>
+                                        </div>
+                                        <span class="text-xs font-bold uppercase tracking-wider mb-2 opacity-80">1st
+                                            Place</span>
+                                        <p class="text-3xl font-black mb-4">₹50,000</p>
+                                        <div class="mt-auto pt-6 border-t border-white/20">
+                                            <p
+                                                class="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-2">
+                                                Main Sponsor</p>
+                                            <div class="flex items-center gap-2">
+                                                <div
+                                                    class="h-8 w-8 bg-white/20 rounded-lg flex items-center justify-center">
+                                                    <span class="material-symbols-outlined text-sm">cloud</span>
+                                                </div>
+                                                <span class="text-xs font-bold">TECH GIANT INC</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex flex-col p-6 bg-white dark:bg-[#1a2333] border border-slate-200 dark:border-[#232f48] rounded-xl relative overflow-hidden group">
+                                        <span class="text-xs font-bold uppercase tracking-wider mb-2 text-slate-400">2nd
+                                            Place</span>
+                                        <p class="text-3xl font-black text-primary mb-4">₹25,000</p>
+                                        <div class="mt-auto pt-6 border-t border-slate-100 dark:border-[#232f48]">
+                                            <p
+                                                class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">
+                                                Partnered with</p>
+                                            <div class="flex items-center gap-2">
+                                                <div
+                                                    class="h-8 w-8 bg-slate-100 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+                                                    <span
+                                                        class="material-symbols-outlined text-sm text-primary">data_object</span>
+                                                </div>
+                                                <span class="text-xs font-bold dark:text-white">QUANTUM SOFT</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex flex-col p-6 bg-white dark:bg-[#1a2333] border border-slate-200 dark:border-[#232f48] rounded-xl relative overflow-hidden group">
+                                        <span class="text-xs font-bold uppercase tracking-wider mb-2 text-slate-400">3rd
+                                            Place</span>
+                                        <p class="text-3xl font-black text-primary mb-4">₹15,000</p>
+                                        <div class="mt-auto pt-6 border-t border-slate-100 dark:border-[#232f48]">
+                                            <p
+                                                class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">
+                                                Supported by</p>
+                                            <div class="flex items-center gap-2">
+                                                <div
+                                                    class="h-8 w-8 bg-slate-100 dark:bg-slate-700 rounded-lg flex items-center justify-center text-orange-500">
+                                                    <span class="material-symbols-outlined text-sm">bolt</span>
+                                                </div>
+                                                <span class="text-xs font-bold dark:text-white">ENERGIZE LABS</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                            <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Campus Atmosphere</h2>
+                            <div
+                                class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg h-[450px] group">
+                                <video
+                                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    autoplay loop muted playsinline>
+                                    <source src="https://kongunadu.ac.in/wp-content/uploads/2025/05/Campus-final.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <!-- Overlay Layer -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#101622] via-primary/20 to-transparent pointer-events-none">
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 w-full p-4 flex items-end justify-between z-10">
+                                    <div>
+                                        <p class="text-white font-bold text-lg drop-shadow-md">Kongunadu College of
+                                            Engineering & Technology</p>
+                                        <p class="text-white/80 text-xs">Innovation Hub</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </section>
+                            <section
+                                class="bg-slate-50 dark:bg-[#1a2333] p-8 rounded-2xl border border-slate-200 dark:border-[#232f48] reveal">
+                                <h2 class="text-xl font-bold mb-4">What is Tezario?</h2>
+                                <div class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-3">
+                                    <p>Tezario 2026 is the premier stage for technological innovation. We bridge the gap
+                                        between software and hardware to build a more connected and efficient world
+                                        through open-source collaboration.</p>
+                                    <p>Developers join us to solve real-world problems while competing for a significant
+                                        prize pool and networking with top-tier technology mentors.</p>
+                                </div>
+                            </section>
+                        </div>
+                        <aside class="lg:col-span-4 flex flex-col gap-8">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] reveal">
+                                <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-xl">schedule</span>
+                                    Event Roadmap
+                                </h3>
+                                <div
+                                    class="flex flex-col gap-6 relative before:absolute before:left-5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100 dark:before:bg-[#232f48]">
+                                    <div class="flex items-start gap-4 relative">
+                                        <div
+                                            class="size-10 rounded-full bg-primary flex items-center justify-center text-white shrink-0 z-10">
+                                            <span class="material-symbols-outlined text-lg">lightbulb</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-bold">Ideation Phase</p>
+                                            <p class="text-xs text-slate-500">Oct 1st - 5th</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4 relative">
+                                        <div
+                                            class="size-10 rounded-full bg-primary/20 text-primary border border-primary/30 flex items-center justify-center shrink-0 z-10 bg-white dark:bg-[#1a2333]">
+                                            <span class="material-symbols-outlined text-lg">code</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-bold">Coding Sprint</p>
+                                            <p class="text-xs text-slate-500">Oct 6th - 12th</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4 relative">
+                                        <div
+                                            class="size-10 rounded-full bg-primary/20 text-primary border border-primary/30 flex items-center justify-center shrink-0 z-10 bg-white dark:bg-[#1a2333]">
+                                            <span class="material-symbols-outlined text-lg">cloud_upload</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-bold">Submissions</p>
+                                            <p class="text-xs text-slate-500">Oct 13th, 11:59 PM</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4 relative">
+                                        <div
+                                            class="size-10 rounded-full bg-primary/20 text-primary border border-primary/30 flex items-center justify-center shrink-0 z-10 bg-white dark:bg-[#1a2333]">
+                                            <span class="material-symbols-outlined text-lg">emoji_events</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-bold">Judging &amp; Awards</p>
+                                            <p class="text-xs text-slate-500">Oct 15th</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-gradient-to-br from-[#1a2333] to-[#101622] p-6 rounded-2xl border border-primary/20 text-center reveal">
+                                <p class="text-slate-400 text-xs uppercase tracking-widest font-bold mb-4">Registration
+                                    Status</p>
+                                <div class="w-full">
+                                    <div class="p-3 bg-white/5 rounded-lg">
+                                        <p class="text-2xl font-black text-white">12</p>
+                                        <p class="text-[10px] text-slate-400">Days Left</p>
+                                    </div>
+                                </div>
+                                <button
+                                    class="mt-6 w-full py-3 bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-lg text-primary text-sm font-bold transition-colors">
+                                    View FAQs
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </main>
+            <footer
+                class="w-full bg-white dark:bg-[#101622] border-t border-slate-200 dark:border-[#232f48] py-10 px-4 mt-auto">
+                <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex items-center gap-2 text-primary font-bold">
+                        <span class="material-symbols-outlined">terminal</span>
+                        <span>Tezario 2026</span>
+                    </div>
+                    <div class="flex gap-8">
+                        <a class="text-slate-500 hover:text-primary transition-colors text-sm" href="#">Privacy
+                            Policy</a>
+                        <a class="text-slate-500 hover:text-primary transition-colors text-sm" href="#">Code of
+                            Conduct</a>
+                        <a class="text-slate-500 hover:text-primary transition-colors text-sm" href="#">Archive</a>
+                    </div>
+                    <p class="text-slate-500 text-xs">© 2026 Kongunadu College of Engineering. Community First
+                        Innovation.</p>
+                </div>
+            </footer>
         </div>
-
-        <main class="main-content">
-            <section class="card" aria-labelledby="events-heading"
-                style="background: transparent; border: none; box-shadow: none; padding: 0;">
-                <div class="events-grid">
-                    <!-- Event 1 -->
-                    <a href="index.html?event=Hackathon" class="event-card" aria-label="Register for Hackathon">
-                        <h4>Hackathon</h4>
-                        <div class="event-meta">
-                            <span>💻 Coding</span>
-                            <span>👥 Team of 4</span>
-                            <span>🕒 24 Hours</span>
-                        </div>
-                        <p>Unleash your coding potential in this 24-hour intense hackathon. Build, ship, and win amazing
-                            prizes while solving real-world problems.</p>
-                        <div class="event-action">
-                            Register Now <span>→</span>
-                        </div>
-                    </a>
-
-                    <!-- Event 2 -->
-                    <a href="index.html?event=UI%2FUX%20Design" class="event-card"
-                        aria-label="Register for UI/UX Challenge">
-                        <h4>UI/UX Challenge</h4>
-                        <div class="event-meta">
-                            <span>🎨 Design</span>
-                            <span>👤 Individual</span>
-                            <span>🕒 4 Hours</span>
-                        </div>
-                        <p>Design an interactive and beautiful prototype for a real-world problem statement. Show off
-                            your creativity and user empathy.</p>
-                        <div class="event-action">
-                            Register Now <span>→</span>
-                        </div>
-                    </a>
-
-                    <!-- Event 3 -->
-                    <a href="index.html?event=AI%2FML%20Workshop" class="event-card"
-                        aria-label="Register for AI/ML Workshop">
-                        <h4>AI/ML Workshop</h4>
-                        <div class="event-meta">
-                            <span>🤖 AI/ML</span>
-                            <span>🎓 Workshop</span>
-                            <span>🕒 1 Day</span>
-                        </div>
-                        <p>Hands-on workshop covering modern machine learning tools, neural networks, and generative AI
-                            workflows. Perfect for beginners and pros.</p>
-                        <div class="event-action">
-                            Register Now <span>→</span>
-                        </div>
-                    </a>
-
-                    <!-- Event 4 -->
-                    <a href="index.html?event=Cyber%20Games" class="event-card" aria-label="Register for Cyber Games">
-                        <h4>Cyber Games</h4>
-                        <div class="event-meta">
-                            <span>🔒 Security</span>
-                            <span>👥 Team of 2</span>
-                            <span>🕒 6 Hours</span>
-                        </div>
-                        <p>Capture the Flag (CTF) and security challenges. Test your skills in cryptography, reverse
-                            engineering, and web security.</p>
-                        <div class="event-action">
-                            Register Now <span>→</span>
-                        </div>
-                    </a>
-
-                    <!-- Event 5 -->
-                    <a href="index.html?event=Paper%20Presentation" class="event-card"
-                        aria-label="Register for Paper Presentation">
-                        <h4>Paper Presentation</h4>
-                        <div class="event-meta">
-                            <span>📄 Research</span>
-                            <span>👥 Team of 2</span>
-                            <span>🕒 15 Mins</span>
-                        </div>
-                        <p>Present your innovative ideas and research papers on emerging technologies before a panel of
-                            industry experts.</p>
-                        <div class="event-action">
-                            Register Now <span>→</span>
-                        </div>
-                    </a>
-
-                    <!-- Event 6 -->
-                    <a href="index.html?event=Gaming%20Tournament" class="event-card"
-                        aria-label="Register for Gaming Tournament">
-                        <h4>Gaming Arena</h4>
-                        <div class="event-meta">
-                            <span>🎮 Gaming</span>
-                            <span>👥 Squad</span>
-                            <span>🕒 3 Hours</span>
-                        </div>
-                        <p>Battle it out in popular titles like Valorant and BGMI. unexpected strategies and pure skill
-                            will win the day.</p>
-                        <div class="event-action">
-                            Register Now <span>→</span>
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <section class="card" style="margin-top:60px;" aria-labelledby="info-heading">
-                <h3 id="info-heading">Event Details</h3>
-                <div style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; text-align: center;">
-                    <div>
-                        <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">📅 Date</div>
-                        <div style="font-size: 1.1rem;">Feb 13–14, 2026</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">📍 Location</div>
-                        <div style="font-size: 1.1rem;">IT Department Block, KEC</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">📧 Contact</div>
-                        <div style="font-size: 1.1rem;">contact@kec-hackathon.edu</div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">© 2026 KEC. All rights reserved.</footer>
     </div>
+
 </body>
+
+<script>
+    // Scroll Reveal Animation Script
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Animate once
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    });
+</script>
 
 </html>

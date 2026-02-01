@@ -8,18 +8,173 @@
 
 :root {
     --primary: #00d4ff;
-    --secondary: #a855f7;
-    --tertiary: #ec4899;
-    --success: #10b981;
-    --danger: #ef4444;
-    --dark-bg: #0f172a;
-    --darker-bg: #0a0e27;
-    --card-bg: #1e293b;
+    --primary-dark: #00a3cc;
+    --secondary: #ff00cc;
+    --accent: #00d4ff;
+    /* Reverted to Cyan Theme */
+    --accent-glow: rgba(0, 212, 255, 0.6);
+    --bg-dark: #020205;
+    --bg-card: rgba(15, 23, 42, 0.6);
     --text-light: #e2e8f0;
-    --text-lighter: #cbd5e1;
-    --border-color: #334155;
-    --glow: 0 0 20px rgba(0, 212, 255, 0.5);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --text-muted: #94a3b8;
+    --font-main: 'Orbitron', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+/* Scroll Animation Classes */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Info Card Styles */
+.info-section {
+    padding: 30px 20px;
+    /* Reduced from 60px */
+    text-align: center;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    /* Reduced from 30px */
+    max-width: 1200px;
+    margin: 20px auto;
+    /* Reduced from 40px */
+}
+
+.info-card {
+    background: linear-gradient(145deg, rgba(20, 20, 25, 0.9), rgba(10, 10, 15, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 20px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 25px var(--accent-glow);
+    transform: translateY(-5px);
+}
+
+.info-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.info-card:hover .info-icon-wrapper {
+    background: var(--accent);
+    color: #000;
+}
+
+.info-label {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    font-size: 1.5rem;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.info-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+/* Registration Details Box */
+.reg-details-box {
+    background: rgba(5, 5, 8, 0.6);
+    /* Darker, more transparent */
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    /* Subtle cyan border */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    max-width: 900px;
+    /* Slightly wider */
+    margin: 0 auto;
+    padding: 30px;
+    /* Add internal padding */
+    backdrop-filter: blur(15px);
+}
+
+.reg-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.02);
+    /* Slight background for separation instead of line */
+    margin-bottom: 15px;
+    /* Spacing between rows */
+    border-radius: 8px;
+    /* Rounded corners */
+    flex-wrap: wrap;
+    gap: 15px;
+    border: 1px solid transparent;
+    /* Prepare for hover border */
+    transition: var(--transition);
+}
+
+.reg-row:hover {
+    background: rgba(0, 212, 255, 0.05);
+    /* Cyan tint on hover */
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+.reg-row:last-child {
+    margin-bottom: 0;
+}
+
+.reg-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.reg-value {
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: right;
+    font-family: 'Poppins', sans-serif;
+    /* Cleaner font for details */
+    font-weight: 600;
+}
+
+.reg-footer {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 700;
 }
 
 html {
@@ -28,7 +183,9 @@ html {
 
 body {
     font-family: 'Inter', 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f172a 0%, #1a1a3e 50%, #0a0e27 100%);
+    background: linear-gradient(-45deg, #0f172a, #1a1a3e, #2e1065, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     background-attachment: fixed;
     color: var(--text-light);
     line-height: 1.6;
@@ -48,10 +205,12 @@ body {
 /* Hero Section */
 .header {
     text-align: center;
-    padding: 100px 20px;
+    padding: 80px 20px 40px;
+    /* Reduced padding */
     background: linear-gradient(180deg, rgba(0, 212, 255, 0.08) 0%, transparent 100%);
     border-bottom: 2px solid rgba(0, 212, 255, 0.2);
-    margin-bottom: 80px;
+    margin-bottom: 30px;
+    /* Reduced from 80px */
     position: relative;
     overflow: hidden;
 }
@@ -62,9 +221,37 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.65;
+    opacity: 0.55;
+    /* slightly dim */
     pointer-events: none;
     z-index: 0;
+}
+
+.header .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+    /* above video but below content */
+    pointer-events: none;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    /* ensure content sits above overlay */
+}
+
+@media (max-width: 768px) {
+
+    /* Disable video on smaller devices for bandwidth and readability */
+    .header .hero-video {
+        display: none;
+    }
+
+    .header .video-overlay {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75));
+    }
 }
 
 /* Utility to hide hero background (used when registration form is shown) */
@@ -216,13 +403,14 @@ body {
 }
 
 .form-group label {
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 10px;
     color: var(--primary);
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .form-group input,
@@ -231,8 +419,9 @@ body {
     background: rgba(15, 23, 42, 0.5);
     border: 2px solid rgba(0, 212, 255, 0.2);
     border-radius: 10px;
-    color: var(--text-light);
+    color: #ffffff;
     font-size: 1rem;
+    font-weight: 500;
     transition: var(--transition);
     font-family: inherit;
 }
@@ -682,6 +871,21 @@ body {
     }
 }
 
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .card {
@@ -944,4 +1148,29 @@ body {
     color: #fff;
     text-shadow: 0 0 10px var(--primary);
     text-decoration: none;
+}
+
+/* Highlight Animation for Prefill */
+.highlight-field {
+    animation: glow-pulse 2s ease-in-out;
+    border-color: var(--primary) !important;
+    background-color: rgba(0, 212, 255, 0.2) !important;
+    transition: all 0.3s ease;
+}
+
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 0 0 rgba(0, 212, 255, 0);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        transform: scale(1.02);
+    }
+
+    100% {
+        box-shadow: 0 0 0 rgba(0, 212, 255, 0);
+        transform: scale(1);
+    }
 }

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hardware Problems - Tezario 2026</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "secondary": "#f97316", // Orange for Hardware
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#232f48] px-6 lg:px-40 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+                <div class="flex items-center gap-8">
+                    <a href="featured-events.html"
+                        class="flex items-center gap-2 text-slate-500 hover:text-secondary transition-colors">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                        Back
+                    </a>
+                    <div class="flex items-center gap-4 text-secondary">
+                        <h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">
+                            Tezario 2026</h2>
+                    </div>
+                </div>
+                <div class="flex flex-1 justify-end gap-4">
+                    <a href="index.html?event=Tezario%202026"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-secondary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-orange-700 transition-all">
+                        <span class="truncate">Register</span>
+                    </a>
+                </div>
+            </header>
+            <main class="flex-1 flex flex-col items-center">
+                <div class="w-full max-w-[1024px] flex flex-col gap-8 py-8 lg:py-12 px-4">
+                    <div class="flex flex-col gap-2 text-center">
+                        <h1
+                            class="text-slate-900 dark:text-white text-4xl lg:text-5xl font-black tracking-tight text-secondary">
+                            Hardware Challenges <span
+                                class="material-symbols-outlined text-4xl align-middle">precision_manufacturing</span>
+                        </h1>
+                        <p class="text-slate-500 dark:text-[#92a4c9] text-lg">Build. Connect. Deploy. Full problem list
+                            below.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-6">
+                        <!-- Problem 01 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=01." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-secondary text-3xl">agriculture</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">01.
+                                        Smart Agriculture in Hilly Regions</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Implementation of Smart
+                                        Agriculture for Efficient Cultivation in Hilly Regions.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">IoT</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Agriculture</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 02 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=02." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-3xl">medical_services</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">02.
+                                        Earthquake Stabilized Dialysis</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Earthquake stabilised dialysis
+                                        system for patient safety during seismic events.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Medical</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Safety</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 03 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=03." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-secondary text-3xl">monitor_heart</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">03.
+                                        Orthotic Pressure Measure</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Real-time based pressure
+                                        measurement device to optimize orthotic design and patient outcomes.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">BioMed</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Sensors</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 04 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=04." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-secondary text-3xl">pets</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">04.
+                                        Elephant Movement Detection</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">AI and IoT Powered Intelligent
+                                        System for Real Time Elephant Movement Detection and Prevention of
+                                        Human-Elephant Conflict (HEC).</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Wildlife</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">IoT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 05 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=05." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-secondary text-3xl">add_road</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">05.
+                                        Geocell Road System</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Design of a Sustainable, Low-Cost
+                                        Geocell Road System for Landslide-Prone Rural Areas.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Civil</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Sustainable</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 06 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=06." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-secondary text-3xl">air</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">06.
+                                        Smart Air Purification</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Low-Cost Decentralized Smart Air
+                                        Purification & Monitoring System.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Environment</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">IoT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 07 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=07." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-secondary text-3xl">watch</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">07.
+                                        Integrated Wearable Monitor</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Integrated Wearable Device for
+                                        Real-Time Monitoring of Vital Parameters, Gas Exposure, and Fatigue.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Wearables</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Health</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 08 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=08." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-secondary text-3xl">thunderstorm</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">08.
+                                        Cloudburst Early Warning</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Cloudburst Early Warning and
+                                        Alarm System.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Disaster</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Sensors</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Problem 09 -->
+                        <a href="index.html?event=Tezario%202026&domain=Hardware&problem=09." class="block group">
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] shadow-lg flex flex-col md:flex-row gap-6 items-start group-hover:border-secondary/50 transition-all">
+                                <div
+                                    class="size-16 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-cyan-500 text-3xl">water</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2 group-hover:text-secondary transition-colors">09.
+                                        Floating Sensor System</h3>
+                                    <p class="text-slate-500 dark:text-[#92a4c9] mb-4">Development of a floating sensor
+                                        based system for automatic reading and transmission of water levels in the
+                                        rivers.</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Hydro</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">IoT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </main>
+            <footer
+                class="w-full bg-white dark:bg-[#101622] border-t border-slate-200 dark:border-[#232f48] py-8 px-4 mt-auto text-center">
+                <p class="text-slate-500 text-xs">© 2026 Kongunadu College of Engineering.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

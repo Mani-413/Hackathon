@@ -21,6 +21,7 @@ const server = http.createServer((req, res) => {
   try {
     let reqPath = decodeURIComponent(req.url.split('?')[0]);
     if (reqPath === '/') reqPath = '/index.html';
+    if (reqPath === '/admin' || reqPath === '/ladmin') reqPath = '/login.html'; // Alias for admin dashboard
     const filePath = path.join(root, reqPath);
 
     fs.stat(filePath, (err, stats) => {

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restricted Access - Tezario 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        body {
+            background-color: #020205;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #e2e8f0;
+            /* Cyber Grid Background */
+            background-image:
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .login-title {
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--accent, #00d4ff);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent, #00d4ff);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-login {
+            background: var(--accent, #00d4ff);
+            color: #000;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background: #fff;
+            box-shadow: 0 0 25px var(--accent-glow, rgba(0, 212, 255, 0.6));
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login Section -->
+    <div class="login-card" id="loginSection">
+        <div class="login-title">Admin Access</div>
+
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password">
+            </div>
+
+            <button type="submit" class="btn-login">Unlock Dashboard</button>
+        </form>
+    </div>
+
+    <!-- Dashboard Section (Hidden by default) -->
+    <div class="dashboard-container" id="dashboardSection"
+        style="display: none; width: 90%; max-width: 1200px; animation: fadeIn 0.8s ease-out;">
+        <div class="header-row"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h1 class="login-title" style="margin: 0; font-size: 2rem;">Admin Dashboard</h1>
+            <button onclick="downloadCSV()" class="btn-login" style="width: auto; padding: 10px 25px; margin: 0;">
+                <span class="material-symbols-outlined"
+                    style="vertical-align: middle; margin-right: 5px;">download</span>
+                Download CSV
+            </button>
+        </div>
+
+        <div
+            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 16px; overflow: hidden; backdrop-filter: blur(15px);">
+            <table style="width: 100%; border-collapse: collapse; color: #fff;">
+                <thead>
+                    <tr style="background: rgba(0, 212, 255, 0.1); border-bottom: 2px solid rgba(0, 212, 255, 0.3);">
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Team Leader Name
+                        </th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Email ID</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Phone Number</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Abstract File</th>
+                        <th style="padding: 15px; text-align: center; color: var(--accent, #00d4ff);">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:3000/api'; // Adjust if backend port differs
+        let studentsData = [];
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // Simple client-side check for demo (Replace with real auth later)
+            if (user === 'admin' && pass === 'admin123') {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('dashboardSection').style.display = 'block';
+                await loadData();
+            } else {
+                alert('Invalid Credentials!');
+            }
+        }
+
+        async function loadData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/students`);
+                const result = await response.json();
+
+                if (result.success) {
+                    studentsData = result.data;
+                    renderTable(studentsData);
+                } else {
+                    alert('Failed to load data.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error connecting to backend.');
+            }
+        }
+
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            data.forEach(student => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+                tr.innerHTML = `
+                <td style="padding: 15px;">${student.name || '-'}</td>
+                <td style="padding: 15px;">${student.email || '-'}</td>
+                <td style="padding: 15px;">${student.phone || '-'}</td>
+                <td style="padding: 15px;">
+                    ${student.abstractFile ?
+                        `<a href="${API_BASE_URL.replace('/api', '')}${student.abstractFile}" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 5px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">description</span> View File
+                         </a>`
+                        : '<span style="color: #64748b;">No File</span>'}
+                </td>
+                <td style="padding: 15px; text-align: center;">
+                    <button onclick="downloadSingleCSV('${student.id || student._id}')" style="background: rgba(0, 212, 255, 0.1); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 4px; padding: 5px 10px; cursor: pointer; transition: all 0.2s;" title="Download details">
+                        <span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">download</span>
+                    </button>
+                </td>
+            `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function generateCSV(dataArray, filename) {
+            if (!dataArray.length) return;
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Team Leader Name,Email ID,Phone Number,Abstract File Link\n";
+
+            dataArray.forEach(student => {
+                const abstractLink = student.abstractFile ? `${API_BASE_URL.replace('/api', '')}${student.abstractFile}` : 'N/A';
+                const name = (student.name || '').replace(/,/g, '');
+                const email = (student.email || '').replace(/,/g, '');
+                const phone = (student.phone || '').replace(/,/g, '');
+
+                const row = `${name},${email},${phone},${abstractLink}`;
+                csvContent += row + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadCSV() {
+            if (!studentsData.length) {
+                alert('No data to download');
+                return;
+            }
+            generateCSV(studentsData, "Tezario_Registrations_All.csv");
+        }
+
+        function downloadSingleCSV(studentId) {
+            // Find by either string ID or Mongo ID
+            const student = studentsData.find(s => s.id === studentId || s._id === studentId);
+            if (student) {
+                generateCSV([student], `Tezario_Student_${student.name.replace(/\s+/g, '_')}.csv`);
+            } else {
+                console.error('Student not found for ID:', studentId);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

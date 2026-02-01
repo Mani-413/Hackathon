@@ -2,168 +2,456 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="KNCET Hackathon 2025 - Register for a 24-hour coding competition. Showcase your skills and win amazing prizes!">
-    <meta name="theme-color" content="#00d4ff">
-    <title>KNCET Hackathon 2025 - Registration Portal</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tezario 2026 | Power User Dashboard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link rel="stylesheet" href="styles.css"> <!-- Added styles.css link -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00d4ff",
+                        "background-dark": "#020c1b",
+                        "panel-bg": "#0a192f",
+                        "input-bg": "#010812",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'neon-sm': '0 0 10px rgba(0, 212, 255, 0.2)',
+                        'neon': '0 0 15px rgba(0, 212, 255, 0.4)',
+                    }
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        /* Base styles */
+        body {
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .glass-panel {
+            background: rgba(10, 25, 47, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        
+        /* Custom Scrollbar */
+        .scrollbar-thin::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
+        }
+        
+        /* Highlight Animation */
+        .highlight-field {
+            animation: glow-pulse-new 2s ease-in-out;
+            border-color: var(--primary) !important;
+            background-color: rgba(0, 212, 255, 0.15) !important;
+        }
+        @keyframes glow-pulse-new {
+            0% { box-shadow: 0 0 0 rgba(0, 212, 255, 0); }
+            50% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.4); }
+            100% { box-shadow: 0 0 0 rgba(0, 212, 255, 0); }
+        }
+    </style>
 </head>
 
-<body>
-    <div id="introOverlay" class="intro-overlay" role="dialog" aria-label="Intro video" aria-hidden="false">
-        <video id="introVideo" class="intro-video" autoplay muted playsinline>
-            <source src="media/intro_sequence_remix.webm" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-        <button id="skipIntroBtn" class="skip-btn" aria-label="Skip intro">Skip</button>
-    </div>
-    <div class="container">
-        <!-- Hero Section -->
-        <header class="header" role="banner">
-            <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
-                <source src="media/intro_sequence_remix.webm" type="video/webm">
-            </video>
-            <div class="header-content">
-                <h1>KONGUNADU ENGINEERING COLLEGE<br>Tezario 2026</h1>
-                <h2>Department of Information Technology</h2>
+<body class="min-h-screen bg-background-dark text-slate-300 antialiased">
 
-                <!-- Hero Stats -->
-                <div class="hero-stats">
-                    <div class="stat-box">
-                        <div class="stat-box-icon">📅</div>
-                        <div class="stat-box-label">Feb 13-14, 2026</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-box-icon">⏱️</div>
-                        <div class="stat-box-label">24 Hours</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-box-icon">📍</div>
-                        <div class="stat-box-label">IT Lab</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-box-icon">💰</div>
-                        <div class="stat-box-label">₹50,000+ Prizes</div>
+    <!-- Intro Overlay -->
+    <!-- Intro Overlay -->
+    <div id="introOverlay"
+        class="fixed inset-0 bg-black z-[9999] flex items-center justify-center transition-opacity duration-1000">
+        <video id="introVideo" class="w-full h-full object-cover" muted playsinline autoplay>
+            <source src="media/intro_sequence_remix.webm" type="video/webm">
+        </video>
+    </div>
+
+    <!-- Page Transition Overlay -->
+    <div id="pageTransition"
+        class="fixed inset-0 bg-black z-[10000] pointer-events-none opacity-0 transition-opacity duration-1000"></div>
+
+    <nav
+        class="sticky top-0 z-50 w-full px-6 py-3 flex justify-between items-center bg-background-dark/90 backdrop-blur-md border-b border-white/5">
+        <div class="flex items-center gap-4">
+            <a href="index.html"
+                class="text-xl font-display font-bold text-primary tracking-tighter hover:opacity-80 transition-opacity">TEZARIO
+                <span class="text-white">2026</span></a>
+            <div class="h-4 w-px bg-white/10"></div>
+            <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Registration Terminal
+                v2.0</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex gap-4 items-center mr-4">
+                <span class="text-[10px] text-primary/60 font-mono">SYSTEM_STATUS: <span
+                        class="text-green-400">ONLINE</span></span>
+                <span class="text-[10px] text-primary/60 font-mono">LATENCY: <span class="text-white">14MS</span></span>
+            </div>
+            <a href="events.html"
+                class="px-4 py-1.5 rounded border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-widest hover:bg-primary/10 transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">logout</span> Exit
+            </a>
+        </div>
+    </nav>
+    <main class="container mx-auto px-4 py-8 max-w-[1400px]">
+        <div class="dashboard-grid">
+            <div class="space-y-6">
+                <div class="glass-panel p-6 rounded-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h1 class="text-3xl font-display font-bold text-white mb-1 tracking-tight uppercase">Team
+                                Commander <span class="text-primary">Dashboard</span></h1>
+                            <p class="text-slate-400 text-sm">Efficient multi-entry form for rapid team deployment.</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="bg-primary/10 border border-primary/20 p-3 rounded text-center min-w-[80px]">
+                                <span class="block text-primary font-bold text-xl leading-none"
+                                    id="slotsFilledCount">0/4</span>
+                                <span class="text-[9px] uppercase text-slate-500 font-bold">Slots filled</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Registration Form Section -->
-            <section class="registration-section" aria-labelledby="registration-heading">
-                <div class="card">
-                    <h3 id="registration-heading">Student Registration Form</h3>
-                    <form id="registrationForm" class="registration-form" method="POST">
-                        <input type="hidden" id="eventName" name="event" value="">
-                        <div class="form-group">
-                            <label for="name">Full Name <span aria-label="required">*</span></label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your full name"
-                                autocomplete="name">
+                <form id="registrationForm" class="space-y-6" method="POST">
+                    <input type="hidden" id="eventName" name="event" value="Tezario 2026">
+
+                    <div class="glass-panel p-6 rounded-lg">
+                        <div class="flex items-center gap-3 border-b border-white/5 pb-4 mb-6">
+                            <span class="material-symbols-outlined text-primary text-xl">security</span>
+                            <h2 class="text-sm font-bold text-white uppercase tracking-widest">Leadership &amp;
+                                Logistics</h2>
                         </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address <span aria-label="required">*</span></label>
-                                <input type="email" id="email" name="email" required placeholder="example@email.com"
-                                    autocomplete="email">
+                        <div class="grid grid-cols-12 gap-5">
+                            <div class="col-span-12 md:col-span-6">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="name">Team Leader Name</label>
+                                <input
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="name" name="name" placeholder="Jane Doe" type="text" required />
                             </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone Number <span aria-label="required">*</span></label>
-                                <input type="tel" id="phone" name="phone" required placeholder="10 digit number"
-                                    maxlength="10" autocomplete="tel">
+                            <div class="col-span-12 md:col-span-6">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="email">Email Address</label>
+                                <input
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="email" name="email" placeholder="jane@tezario.io" type="email" required />
                             </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="rollNumber">Roll Number <span aria-label="required">*</span></label>
-                                <input type="text" id="rollNumber" name="rollNumber" required
-                                    placeholder="Enter roll number" autocomplete="off">
+                            <div class="col-span-12 md:col-span-4">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="phone">Phone Number</label>
+                                <input
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="phone" name="phone" placeholder="+91 98765 43210" type="tel" required
+                                    maxlength="10" />
                             </div>
-
-                            <div class="form-group">
-                                <label for="year">Year <span aria-label="required">*</span></label>
-                                <select id="year" name="year" required>
-                                    <option value="">Select Year</option>
-                                    <option value="I">First Year</option>
-                                    <option value="II">Second Year</option>
-                                    <option value="III">Third Year</option>
-                                    <option value="IV">Fourth Year</option>
+                            <div class="col-span-12 md:col-span-4">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="rollNumber">Roll Number</label>
+                                <input
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="rollNumber" name="rollNumber" placeholder="6213XXXXXX" type="text" required />
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="accommodation">Accommodation</label>
+                                <select
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="accommodation" name="accommodation">
+                                    <option value="">Select Accommodation</option>
+                                    <option value="dayscholar">dayscholar</option>
+                                    <option value="hosteller">hosteller</option>
                                 </select>
                             </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="department">Department</label>
+                                <select
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="department" name="department" required>
+                                    <option value="">Select Department</option>
+                                    <option value="CSE">Computer Science &amp; Engineering</option>
+                                    <option value="AI">Artificial Intelligence</option>
+                                    <option value="Cyber">Cyber Security</option>
+                                    <option value="Data">Data Science</option>
+                                    <option value="IT">Information Technology</option>
+                                    <option value="ECE">Electronics & Communication</option>
+                                    <option value="EEE">Electrical & Electronics</option>
+                                    <option value="MECH">Mechanical Engineering</option>
+                                    <option value="CIVIL">Civil Engineering</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80">Year
+                                    of Study</label>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <!-- Styled Radio Buttons -->
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="year" value="1" class="peer sr-only year-radio"
+                                            required>
+                                        <div
+                                            class="py-2 text-[10px] font-bold border border-white/10 rounded hover:border-primary hover:text-primary transition-colors uppercase text-center">
+                                            1st</div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="year" value="2" class="peer sr-only year-radio">
+                                        <div
+                                            class="py-2 text-[10px] font-bold border border-white/10 rounded hover:border-primary hover:text-primary transition-colors uppercase text-center">
+                                            2nd</div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="year" value="3" class="peer sr-only year-radio">
+                                        <div
+                                            class="py-2 text-[10px] font-bold border border-white/10 rounded hover:border-primary hover:text-primary transition-colors uppercase text-center">
+                                            3rd</div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="year" value="4" class="peer sr-only year-radio">
+                                        <div
+                                            class="py-2 text-[10px] font-bold border border-white/10 rounded hover:border-primary hover:text-primary transition-colors uppercase text-center">
+                                            4th</div>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="department">Department <span aria-label="required">*</span></label>
-                            <select id="department" name="department" required>
-                                <option value="">Select Department</option>
-                                <option value="Computer Science and Engineering">Computer Science and Engineering
-                                </option>
-                                <option value="Information Technology">Information Technology</option>
-                                <option value="Electronics and Communication Engineering">Electronics and Communication
-                                    Engineering</option>
-                                <option value="Electrical and Electronics Engineering">Electrical and Electronics
-                                    Engineering</option>
-                                <option value="Mechanical Engineering">Mechanical Engineering</option>
-                                <option value="Civil Engineering">Civil Engineering</option>
-                                <option value="Automobile Engineering">Automobile Engineering</option>
-                                <option value="Aeronautical Engineering">Aeronautical Engineering</option>
-                                <option value="Biomedical Engineering">Biomedical Engineering</option>
-                                <option value="Biotechnology">Biotechnology</option>
-                                <option value="Chemical Engineering">Chemical Engineering</option>
-                                <option value="Food Technology">Food Technology</option>
-                            </select>
+                    </div>
+                    <div class="glass-panel p-6 rounded-lg">
+                        <div class="flex items-center gap-3 border-b border-white/5 pb-4 mb-6">
+                            <span class="material-symbols-outlined text-primary text-xl">architecture</span>
+                            <h2 class="text-sm font-bold text-white uppercase tracking-widest">Project Architecture</h2>
                         </div>
+                        <div class="grid grid-cols-12 gap-5">
+                            <div class="col-span-12 md:col-span-4">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="teamName">Team Name</label>
+                                <input
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="teamName" name="teamName" placeholder="CYBER_PUNKS_26" type="text" />
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="domain">Project Domain</label>
+                                <select
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="domain" name="domain" required>
+                                    <option value="">Select Domain</option>
+                                    <option value="Software">Software</option>
+                                    <option value="Hardware">Hardware</option>
+                                </select>
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="teamSize">Team Size</label>
+                                <select
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700"
+                                    id="teamSize" name="teamSize">
+                                    <option value="1">1 Member (Solo)</option>
+                                    <option value="2">2 Members</option>
+                                    <option value="3">3 Members</option>
+                                    <option value="4">4 Members</option>
+                                </select>
+                            </div>
+                            <div class="col-span-12" id="problemStatementGroup">
+                                <label
+                                    class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5 opacity-80"
+                                    for="problemStatement">Problem Statement Selection</label>
+                                <select
+                                    class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700 !border-primary/40 shadow-neon-sm"
+                                    id="problemStatement" name="problemStatement" required disabled>
+                                    <option value="">Select Domain First</option>
+                                </select>
 
-                        <div class="form-group">
-                            <label for="teamName">Team Name <span aria-label="required">*</span></label>
-                            <input type="text" id="teamName" name="teamName" required placeholder="Enter team name"
-                                autocomplete="off">
+                                <!-- Copyable Full Text Area -->
+                                <div class="mt-2 hidden" id="problemTextContainer">
+                                    <div class="relative">
+                                        <textarea id="problemStatementFullText" readonly
+                                            class="w-full bg-black/40 border border-primary/30 rounded p-3 text-sm text-green-400 font-mono h-24 resize-none focus:outline-none scrollbar-thin"></textarea>
+                                        <button type="button" id="copyProblemBtn"
+                                            onclick="navigator.clipboard.writeText(document.getElementById('problemStatementFullText').value); this.innerHTML = '<span class=\'material-symbols-outlined text-[14px]\'>check</span> Copied!'; setTimeout(() => this.innerHTML = '<span class=\'material-symbols-outlined text-[14px]\'>content_copy</span> Copy', 2000);"
+                                            class="absolute top-2 right-2 bg-primary/20 hover:bg-primary/40 text-primary text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded border border-primary/30 transition-all flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Abstract Upload (Hidden/Shown by script) -->
+                            <div class="col-span-12" id="abstractUploadGroup">
+                                <label class="block text-[10px] font-bold text-primary uppercase tracking-[0.15em] mb-1.5
+                                opacity-80" for="abstractFile">Abstract Upload (PDF, PPT, Word - Max 10MB)</label>
+                                <div class="relative">
+                                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" type="file"
+                                        id="abstractFile" accept=".pdf,.ppt,.pptx,.doc,.docx"
+                                        onchange="const f=this.files[0]; if(f){ document.getElementById('uploadText').innerText='File Selected: '+f.name; document.getElementById('uploadIcon').innerText='check_circle'; document.getElementById('uploadBox').classList.add('border-green-500', 'text-green-400'); }" />
+                                    <div id="uploadBox"
+                                        class="w-full bg-input-bg border border-white/10 rounded px-3 py-2 text-sm text-white transition-all duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none placeholder:text-slate-700 flex items-center justify-center gap-2 py-4 border-dashed border-2 border-primary/30 hover:border-primary/60 transition-colors">
+                                        <span class="material-symbols-outlined text-primary"
+                                            id="uploadIcon">cloud_upload</span>
+                                        <span class="text-xs uppercase tracking-widest text-slate-400"
+                                            id="uploadText">Click to Upload
+                                            Abstract</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
                         </div>
-
-                        <button type="submit" class="btn btn-primary" aria-label="Submit registration form">Register for
-                            Hackathon</button>
-                    </form>
-                </div>
-            </section>
-
-            <!-- Statistics Section -->
-            <section class="stats-section" aria-labelledby="stats-heading">
-                <div class="card">
-                    <h3 id="stats-heading">Registration Statistics</h3>
-                    <div class="stats-grid" id="statsGrid">
-                        <div class="stat-card">
-                            <div class="stat-value" id="totalRegistrations">0</div>
-                            <div class="stat-label">Total Registrations</div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 glass-panel rounded-lg border-primary/30">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary/60 text-sm">info</span>
+                            <p class="text-[10px] text-slate-500 font-medium uppercase tracking-widest">Auto-save
+                                active: Last saved 2m ago</p>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="departmentCount">0</div>
-                            <div class="stat-label">Departments</div>
+                        <button type="submit"
+                            class="bg-primary hover:bg-primary/80 text-background-dark font-display font-bold px-8 py-3 rounded uppercase text-sm tracking-widest flex items-center gap-3 transition-all shadow-neon focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            Finalize &amp; Deploy Team <span class="material-symbols-outlined">bolt</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <aside class="space-y-6">
+                <div class="glass-panel rounded-lg h-full flex flex-col">
+                    <div class="p-6 border-b border-white/5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h2 class="text-xs font-bold text-primary uppercase tracking-widest">Team Members</h2>
+                            <span class="text-[10px] font-mono text-slate-500">[<span
+                                    id="sidebarCount">0/4</span>]</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Add up to 3 more participants to your roster.</p>
+                    </div>
+                    <div class="flex-1 overflow-y-auto p-4 scrollbar-thin space-y-4" id="teamMembersContainer">
+                        <!-- Dynamic Team Content will be injected here by script.js -->
+                    </div>
+                    <div class="p-6 bg-black/40 border-t border-white/5 rounded-b-lg">
+                        <h3 class="text-[10px] font-bold text-primary uppercase tracking-widest mb-4">Registration
+                            Summary</h3>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex justify-between text-[11px]">
+                                <span class="text-slate-500 uppercase">Track</span>
+                                <span class="text-white font-medium" id="summaryTrack">Software Engineering</span>
+                            </div>
+                            <div class="flex justify-between text-[11px]">
+                                <span class="text-slate-500 uppercase">Team Slots</span>
+                                <span class="text-white font-medium" id="summarySlots">4 Total</span>
+                            </div>
+                            <div class="flex justify-between text-[11px]">
+                                <span class="text-slate-500 uppercase">Duration</span>
+                                <span class="text-white font-medium">48 Hours</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-primary/5 border border-primary/20 rounded">
+                            <p class="text-[10px] text-primary leading-relaxed">
+                                <span class="font-bold">NOTICE:</span> All team members must verify their email
+                                addresses within 24 hours of final registration.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>
-
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer" role="contentinfo">
-            <p>&copy; 2025 Kongunadu College of Engineering and Technology. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <!-- Modal for notifications -->
-    <div id="modal" class="modal" role="dialog" aria-labelledby="modalMessage" aria-hidden="true">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()" aria-label="Close notification">&times;</span>
-            <div id="modalMessage"></div>
+            </aside>
         </div>
-    </div>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="glass-panel p-4 rounded-lg flex items-center gap-4 border-l-4 border-primary">
+                <div class="bg-primary/10 p-2 rounded">
+                    <span class="material-symbols-outlined text-primary">groups</span>
+                </div>
+                <div>
+                    <p class="text-white font-display font-bold text-lg leading-none" id="totalRegistrations">1,240</p>
+                    <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Active Users</p>
+                </div>
+            </div>
+            <div class="glass-panel p-4 rounded-lg flex items-center gap-4 border-l-4 border-primary/40">
+                <div class="bg-white/5 p-2 rounded">
+                    <span class="material-symbols-outlined text-slate-400">database</span>
+                </div>
+                <div>
+                    <p class="text-white font-display font-bold text-lg leading-none" id="departmentCount">342</p>
+                    <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Teams Logged</p>
+                </div>
+            </div>
+            <div class="glass-panel p-4 rounded-lg flex items-center gap-4 border-l-4 border-primary/40">
+                <div class="bg-white/5 p-2 rounded">
+                    <span class="material-symbols-outlined text-slate-400">timer</span>
+                </div>
+                <div>
+                    <p class="text-white font-display font-bold text-lg leading-none">12D 04H</p>
+                    <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Closing In</p>
+                </div>
+            </div>
+            <div class="glass-panel p-4 rounded-lg flex items-center gap-4 border-l-4 border-primary/40">
+                <div class="bg-white/5 p-2 rounded">
+                    <span class="material-symbols-outlined text-slate-400">payments</span>
+                </div>
+                <div>
+                    <p class="text-white font-display font-bold text-lg leading-none">$25,000</p>
+                    <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Total Pool</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal (Copied from old design) -->
+        <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[1000] hidden">
+            <div class="glass-panel max-w-md mx-auto mt-40 p-8 rounded-xl border border-primary/50 shadow-neon">
+                <span class="float-right text-primary cursor-pointer text-2xl hover:text-white transition-colors"
+                    onclick="closeModal()">×</span>
+                <div id="modalMessage" class="mt-4 text-center font-display text-lg"></div>
+            </div>
+        </div>
+
+    </main>
+    <footer class="w-full py-8 mt-12 bg-black/40 border-t border-white/5 text-center">
+        <div class="flex justify-center gap-8 mb-4">
+            <a class="text-slate-500 hover:text-primary transition-colors uppercase text-[10px] font-bold tracking-widest"
+                href="#">Support Console</a>
+            <a class="text-slate-500 hover:text-primary transition-colors uppercase text-[10px] font-bold tracking-widest"
+                href="#">API Docs</a>
+            <a class="text-slate-500 hover:text-primary transition-colors uppercase text-[10px] font-bold tracking-widest"
+                href="#">Terms of Engagement</a>
+        </div>
+        <p class="text-slate-700 text-[10px] uppercase tracking-[0.4em] font-medium">© 2026 TEZARIO CENTRAL COMMAND. ALL
+            RIGHTS RESERVED.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
