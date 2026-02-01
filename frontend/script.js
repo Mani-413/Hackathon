@@ -798,43 +798,7 @@ function formatDate(dateString) {
         second: '2-digit'
     });
 }
- 
- / /   C o u n t d o w n   T i m e r   L o g i c  
- f u n c t i o n   s t a r t C o u n t d o w n ( )   {  
-         c o n s t   t i m e r E l e m e n t   =   d o c u m e n t . g e t E l e m e n t B y I d ( ' c o u n t d o w n T i m e r ' ) ;  
-         i f   ( ! t i m e r E l e m e n t )   r e t u r n ;  
-  
-         / /   S e t   t h e   d a t e   w e ' r e   c o u n t i n g   d o w n   t o  
-         c o n s t   c o u n t D o w n D a t e   =   n e w   D a t e ( " F e b   6 ,   2 0 2 6   0 0 : 0 0 : 0 0 " ) . g e t T i m e ( ) ;  
-  
-         / /   U p d a t e   t h e   c o u n t   d o w n   e v e r y   1   s e c o n d  
-         c o n s t   x   =   s e t I n t e r v a l ( f u n c t i o n   ( )   {  
-  
-                 / /   G e t   t o d a y ' s   d a t e   a n d   t i m e  
-                 c o n s t   n o w   =   n e w   D a t e ( ) . g e t T i m e ( ) ;  
-  
-                 / /   F i n d   t h e   d i s t a n c e   b e t w e e n   n o w   a n d   t h e   c o u n t   d o w n   d a t e  
-                 c o n s t   d i s t a n c e   =   c o u n t D o w n D a t e   -   n o w ;  
-  
-                 / /   T i m e   c a l c u l a t i o n s   f o r   d a y s ,   h o u r s ,   m i n u t e s   a n d   s e c o n d s  
-                 c o n s t   d a y s   =   M a t h . f l o o r ( d i s t a n c e   /   ( 1 0 0 0   *   6 0   *   6 0   *   2 4 ) ) ;  
-                 c o n s t   h o u r s   =   M a t h . f l o o r ( ( d i s t a n c e   %   ( 1 0 0 0   *   6 0   *   6 0   *   2 4 ) )   /   ( 1 0 0 0   *   6 0   *   6 0 ) ) ;  
-                 c o n s t   m i n u t e s   =   M a t h . f l o o r ( ( d i s t a n c e   %   ( 1 0 0 0   *   6 0   *   6 0 ) )   /   ( 1 0 0 0   *   6 0 ) ) ;  
-  
-                 / /   D i s p l a y   t h e   r e s u l t  
-                 t i m e r E l e m e n t . i n n e r H T M L   =   ` $ { d a y s } D   $ { h o u r s } H ` ;  
-  
-                 / /   I f   t h e   c o u n t   d o w n   i s   f i n i s h e d ,   w r i t e   s o m e   t e x t  
-                 i f   ( d i s t a n c e   <   0 )   {  
-                         c l e a r I n t e r v a l ( x ) ;  
-                         t i m e r E l e m e n t . i n n e r H T M L   =   " E X P I R E D " ;  
-                 }  
-         } ,   1 0 0 0 ) ;  
- }  
-  
- / /   S t a r t   t h e   t i m e r   w h e n   D O M   i s   l o a d e d  
- d o c u m e n t . a d d E v e n t L i s t e n e r ( ' D O M C o n t e n t L o a d e d ' ,   s t a r t C o u n t d o w n ) ;  
- 
+
 // Countdown Timer Logic
 function startCountdown() {
     const timerElement = document.getElementById('countdownTimer');
