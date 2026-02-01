@@ -376,7 +376,8 @@
                   <div style="margin-top: 15px;">
                     <div
                       style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto; display:flex; align-items:center; justify-content:center;">
-                      <span class="material-symbols-outlined text-muted">fingerprint</span></div>
+                      <span class="material-symbols-outlined text-muted">fingerprint</span>
+                    </div>
                   </div>
                 </div>
                 < !-- Time Card (Unified Style) -->
@@ -593,9 +594,7 @@
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 
-          ctx.fillStyle = `rgba(255, 255, 255, $ {
-              this.opacity
-            })`;
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
           ctx.shadowBlur = this.size * 2;
           ctx.shadowColor = "white";
           ctx.fill();
