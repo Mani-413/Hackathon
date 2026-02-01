@@ -19,14 +19,17 @@
     body {
       background-color: #020205;
       font-family: 'Space Grotesk', sans-serif;
-      /* Cleaner, tech look */
       color: #e2e8f0;
-      /* Cyber Grid Background */
+      /* Full Page Cyber Background */
       background-image:
         linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
       background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
 
     h1,
@@ -42,49 +45,36 @@
     }
 
     .hero-title {
-      font-family: 'Syncopate', sans-serif;
-      /* Wide, futuristic font */
-    }
-
-    p,
-    .info-sub,
-    .reg-value,
-    .btn {
-      font-family: 'Space Grotesk', sans-serif;
-      /* Consistent tech font */
-    }
-
-    /* Hero Title Styling */
-    .hero-title {
-      font-family: 'Syncopate', sans-serif;
-      font-size: 4rem !important;
-      /* Increased size */
-      font-weight: 800;
+      font-family: 'Chakra Petch', sans-serif;
+      /* Matching the angular cyber look */
+      font-size: 5rem !important;
+      /* Larger to match the blocky feel */
+      font-weight: 700;
+      font-style: italic;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      margin: 20px 0;
+      letter-spacing: 2px;
+      margin: 10px 0;
 
-      /* Unique Gradient Text */
+      /* Keep the unique gradient */
       background: linear-gradient(135deg, #FFD700 0%, #ffffff 50%, #00d4ff 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
 
-      /* Multi-layer Neon Glow */
-      filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
+      /* Sharper, heavier drop shadow */
+      filter: drop-shadow(4px 4px 0px #000000) drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
 
-      /* Animation */
       animation: titlePulse 3s infinite alternate;
     }
 
     @keyframes titlePulse {
       0% {
-        filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
+        filter: drop-shadow(4px 4px 0px #000000) drop-shadow(0 0 10px rgba(0, 212, 255, 0.2));
         transform: scale(1);
       }
 
       100% {
-        filter: drop-shadow(0 0 4px rgba(255, 215, 0, 1)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 50px rgba(0, 212, 255, 0.5));
+        filter: drop-shadow(6px 6px 0px #000000) drop-shadow(0 0 30px rgba(0, 212, 255, 0.6));
         transform: scale(1.02);
       }
     }
