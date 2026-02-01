@@ -57,17 +57,36 @@
     /* Hero Title Styling */
     .hero-title {
       font-family: 'Syncopate', sans-serif;
-      font-size: 3.5rem !important;
-      /* Slightly smaller as Syncopate is wide */
-      font-weight: 700;
+      font-size: 4rem !important;
+      /* Increased size */
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 6px;
-      /* Wider spacing */
-      margin: 15px 0;
-      background: none;
-      -webkit-text-fill-color: #ffffff;
-      color: #ffffff;
-      text-shadow: 0 0 20px var(--accent-glow);
+      letter-spacing: 4px;
+      margin: 20px 0;
+
+      /* Unique Gradient Text */
+      background: linear-gradient(135deg, #FFD700 0%, #ffffff 50%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      /* Multi-layer Neon Glow */
+      filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
+
+      /* Animation */
+      animation: titlePulse 3s infinite alternate;
+    }
+
+    @keyframes titlePulse {
+      0% {
+        filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 30px rgba(0, 212, 255, 0.3));
+        transform: scale(1);
+      }
+
+      100% {
+        filter: drop-shadow(0 0 4px rgba(255, 215, 0, 1)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 50px rgba(0, 212, 255, 0.5));
+        transform: scale(1.02);
+      }
     }
 
     /* Countdown Styling */
