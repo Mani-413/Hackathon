@@ -609,102 +609,128 @@
     });
 
     /**
-     * CYBER PLEXUS ANIMATION
-     * Custom canvas background with particles and connections
+     * COGNEBULA COSMIC THEME ANIMATION
+     * Starfield with twinkling stars and subtle nebula glow
      */
     const canvas = document.getElementById('bg-canvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
       let width, height;
-      let particles = [];
+      let stars = [];
+      let nebulas = [];
 
       // Configuration
       const config = {
-        particleCount: 60, // Number of nodes
-        connectionDistance: 150, // Max distance to draw line
-        mouseDistance: 200, // Mouse interaction radius
-        speed: 0.5, // Base movement speed
-        colors: ['#06b6d4', '#a855f7'] // Cyan, Purple
+        starCount: 150,
+        nebulaCount: 8,
+        colors: ['#06b6d4', '#a855f7', '#3b82f6', '#ffffff']
       };
 
-      // Resize handling
       function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
-        initParticles();
+        initSpace();
       }
       window.addEventListener('resize', resize);
 
-      // Particle Class
-      class Particle {
+      class Star {
         constructor() {
+          this.reset();
+          this.y = Math.random() * height; // Initial random Y
+        }
+
+        reset() {
           this.x = Math.random() * width;
           this.y = Math.random() * height;
-          this.vx = (Math.random() - 0.5) * config.speed;
-          this.vy = (Math.random() - 0.5) * config.speed;
-          this.size = Math.random() * 2 + 1;
-          this.color = config.colors[Math.floor(Math.random() * config.colors.length)];
+          this.size = Math.random() * 1.5;
+          this.blinkSpeed = 0.02 + Math.random() * 0.03;
+          this.opacity = Math.random();
+          this.dir = Math.random() > 0.5 ? 1 : -1;
+          this.velY = (Math.random() - 0.5) * 0.2; // Gentle float
+          this.velX = (Math.random() - 0.5) * 0.2;
         }
 
         update() {
-          this.x += this.vx;
-          this.y += this.vy;
+          this.opacity += this.blinkSpeed * this.dir;
+          if (this.opacity > 1 || this.opacity < 0.2) this.dir *= -1;
 
-          // Bounce off edges
-          if (this.x < 0 || this.x > width) this.vx *= -1;
-          if (this.y < 0 || this.y > height) this.vy *= -1;
+          this.x += this.velX;
+          this.y += this.velY;
 
-          // Mouse interaction (optional repel/attract)
-          // Keep it subtle for background
+          // Wrap around
+          if (this.x < 0) this.x = width;
+          if (this.x > width) this.x = 0;
+          if (this.y < 0) this.y = height;
+          if (this.y > height) this.y = 0;
         }
 
         draw() {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = this.color;
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+          ctx.shadowBlur = this.size * 2;
+          ctx.shadowColor = "white";
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      class Nebula {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.radius = Math.random() * 200 + 100;
+          this.color = config.colors[Math.floor(Math.random() * (config.colors.length - 1))]; // Exclude white
+          this.vx = (Math.random() - 0.5) * 0.3;
+          this.vy = (Math.random() - 0.5) * 0.3;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < -this.radius) this.x = width + this.radius;
+          if (this.x > width + this.radius) this.x = -this.radius;
+          if (this.y < -this.radius) this.y = height + this.radius;
+          if (this.y > height + this.radius) this.y = -this.radius;
+        }
+
+        draw() {
+          const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+          gradient.addColorStop(0, this.color + '15'); // Very transparent hex
+          gradient.addColorStop(1, 'transparent');
+
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      function initParticles() {
-        particles = [];
-        // Adjust particle count based on screen size
-        const count = width < 768 ? 30 : config.particleCount;
-        for (let i = 0; i < count; i++) {
-          particles.push(new Particle());
-        }
+      function initSpace() {
+        stars = [];
+        nebulas = [];
+        const sCount = width < 768 ? 50 : config.starCount;
+        for (let i = 0; i < sCount; i++) stars.push(new Star());
+
+        const nCount = width < 768 ? 3 : config.nebulaCount;
+        for (let i = 0; i < nCount; i++) nebulas.push(new Nebula());
       }
 
       function animate() {
-        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = '#020617'; // Deep space background
+        ctx.fillRect(0, 0, width, height);
 
-        // Update and draw particles
-        for (let i = 0; i < particles.length; i++) {
-          particles[i].update();
-          particles[i].draw();
+        // Draw Nebulas (Behind stars)
+        nebulas.forEach(n => { n.update(); n.draw(); });
 
-          // Connect particles
-          for (let j = i; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+        // Draw Stars
+        stars.forEach(s => { s.update(); s.draw(); });
 
-            if (distance < config.connectionDistance) {
-              ctx.beginPath();
-              ctx.strokeStyle = `rgba(6, 182, 212, ${1 - distance / config.connectionDistance})`; // Cyan fade
-              ctx.lineWidth = 0.5;
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
-        }
         requestAnimationFrame(animate);
       }
 
-      // Start
       resize();
       animate();
     }
