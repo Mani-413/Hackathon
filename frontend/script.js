@@ -835,3 +835,38 @@ function formatDate(dateString) {
  / /   S t a r t   t h e   t i m e r   w h e n   D O M   i s   l o a d e d  
  d o c u m e n t . a d d E v e n t L i s t e n e r ( ' D O M C o n t e n t L o a d e d ' ,   s t a r t C o u n t d o w n ) ;  
  
+// Countdown Timer Logic
+function startCountdown() {
+    const timerElement = document.getElementById('countdownTimer');
+    if (!timerElement) return;
+
+    // Set the date we're counting down to
+    const countDownDate = new Date("Feb 6, 2026 00:00:00").getTime();
+
+    // Update the count down every 1 second
+    const x = setInterval(function () {
+
+        // Get today's date and time
+        const now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        const distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        // Display the result
+        timerElement.innerHTML = `${days}D ${hours}H`;
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            timerElement.innerHTML = "EXPIRED";
+        }
+    }, 1000);
+}
+
+// Start the timer when DOM is loaded
+document.addEventListener('DOMContentLoaded', startCountdown);
