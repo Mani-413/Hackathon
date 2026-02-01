@@ -5,6 +5,7 @@ package-lock.json
 # Data files
 backend/data/
 *.json
+!backend/credentials.json
 
 # Environment variables
 .env

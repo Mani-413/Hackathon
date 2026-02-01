@@ -232,7 +232,7 @@
                         : '<span style="color: #64748b;">No File</span>'}
                 </td>
                 <td style="padding: 15px; text-align: center;">
-                    <button onclick="downloadSingleCSV('${student.id || student._id}')" style="background: rgba(0, 212, 255, 0.1); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 4px; padding: 5px 10px; cursor: pointer; transition: all 0.2s;" title="Download details">
+                    <button onclick="downloadSingleCSV('${student.id || student._id}', this)" style="background: rgba(0, 212, 255, 0.1); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 4px; padding: 5px 10px; cursor: pointer; transition: all 0.2s;" title="Download details">
                         <span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">download</span>
                     </button>
                 </td>
@@ -274,11 +274,20 @@
             generateCSV(studentsData, "Tezario_Registrations_All.csv");
         }
 
-        function downloadSingleCSV(studentId) {
+        function downloadSingleCSV(studentId, btnElement) {
             // Find by either string ID or Mongo ID
             const student = studentsData.find(s => s.id === studentId || s._id === studentId);
             if (student) {
                 generateCSV([student], `Tezario_Student_${student.name.replace(/\s+/g, '_')}.csv`);
+
+                // Visual Feedback: Change button to Green Check
+                if (btnElement) {
+                    btnElement.style.background = 'rgba(0, 255, 128, 0.2)';
+                    btnElement.style.color = '#00ff80';
+                    btnElement.style.borderColor = '#00ff80';
+                    btnElement.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">check_circle</span>';
+                    btnElement.title = "Download Complete";
+                }
             } else {
                 console.error('Student not found for ID:', studentId);
             }
