@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'https://tezario-backend.onrender.com/api'; // Live Render Backend
 
 // Load students and stats on page load
 document.addEventListener('DOMContentLoaded', () => {
