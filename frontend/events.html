@@ -243,7 +243,7 @@
 
 
 
-  <div class="container">
+  <div class="container mx-auto">
     <header class="header relative min-h-[92vh] flex flex-col items-center justify-start pt-14 px-6 overflow-hidden"
       style="padding-bottom: 0;">
       <div class="absolute top-[-5%] left-[-10%] w-[70%] h-[30%] bg-primary/10 blur-[120px] rounded-full"></div>
@@ -273,156 +273,155 @@
         </div>
       </div>
       <div class="grid grid-cols-4 gap-4 w-full max-w-sm px-2 mb-16 z-10">
-        < !-- Days -->
-          <div class="flex flex-col items-center">
-            <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
-                <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
-                  stroke-width="2.5"></circle>
-                <circle id="ring-days" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
-                  stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
-                <defs>
-                  <linearGradient id="cyan-grad" x1="0%" x2="100%" y1="0%" y2="0%">
-                    <stop offset="0%" stop-color="#06b6d4"></stop>
-                    <stop offset="100%" stop-color="#a855f7"></stop>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div class="absolute inset-0 flex items-center justify-center"><span id="val-days"
-                  class="font-tech text-xl font-bold text-white">00</span></div>
-            </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">DAYS</span>
-          </div>
-          < !-- Hours -->
-            <div class="flex flex-col items-center">
-              <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
-                  <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
-                    stroke-width="2.5"></circle>
-                  <circle id="ring-hours" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
-                    stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
-                </svg>
-                <div class="absolute inset-0 flex items-center justify-center"><span id="val-hours"
-                    class="font-tech text-xl font-bold text-white">00</span></div>
-              </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">HOURS</span>
-            </div>
-            < !-- Minutes -->
-              <div class="flex flex-col items-center">
-                <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
-                    <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
-                      stroke-width="2.5"></circle>
-                    <circle id="ring-minutes" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
-                      stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
-                  </svg>
-                  <div class="absolute inset-0 flex items-center justify-center"><span id="val-minutes"
-                      class="font-tech text-xl font-bold text-white">00</span></div>
-                </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">MINS</span>
-              </div>
-              < !-- Seconds -->
-                <div class="flex flex-col items-center">
-                  <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
-                      <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
-                        stroke-width="2.5"></circle>
-                      <circle id="ring-seconds" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
-                        stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
-                    </svg>
-                    <div class="absolute inset-0 flex items-center justify-center"><span id="val-seconds"
-                        class="font-tech text-xl font-bold text-primary">00</span></div>
-                  </div><span
-                    class="text-[9px] font-tech text-slate-500 font-bold tracking-widest text-primary/60">SECS</span>
-                </div>
-      </div>
-      < !-- Background Graphic Lines -->
-        <div class="absolute bottom-16 left-0 w-full h-32 opacity-20 pointer-events-none">
-          <div class="flex items-end justify-center gap-1.5 h-full px-6">
-            <div class="w-[2px] bg-primary/40" style="height: 35%"></div>
-            <div class="w-[2px] bg-primary/60" style="height: 60%"></div>
-            <div class="w-[2px] bg-primary" style="height: 45%"></div>
-            <div class="w-[2px] bg-secondary" style="height: 80%"></div>
-            <div class="w-[2px] bg-secondary/60" style="height: 55%"></div>
-            <div class="w-[2px] bg-primary/30" style="height: 30%"></div>
-            <div class="w-[2px] bg-primary" style="height: 70%"></div>
-            <div class="w-[2px] bg-secondary" style="height: 40%"></div>
-            <div class="w-[2px] bg-primary/50" style="height: 90%"></div>
-            <div class="w-[2px] bg-primary/20" style="height: 25%"></div>
-            <div class="w-[2px] bg-secondary/70" style="height: 50%"></div>
-            <div class="w-[2px] bg-primary" style="height: 75%"></div>
-            <div class="w-[2px] bg-primary/40" style="height: 35%"></div>
-          </div>
+        <!-- Days -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-days" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+              <defs>
+                <linearGradient id="cyan-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+                  <stop offset="0%" stop-color="#06b6d4"></stop>
+                  <stop offset="100%" stop-color="#a855f7"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-days"
+                class="font-tech text-xl font-bold text-white">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">DAYS</span>
         </div>
+        <!-- Hours -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-hours" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-hours"
+                class="font-tech text-xl font-bold text-white">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">HOURS</span>
+        </div>
+        <!-- Minutes -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-minutes" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-minutes"
+                class="font-tech text-xl font-bold text-white">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">MINS</span>
+        </div>
+        <!-- Seconds -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-seconds" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-seconds"
+                class="font-tech text-xl font-bold text-primary">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest text-primary/60">SECS</span>
+        </div>
+      </div>
+      <!-- Background Graphic Lines -->
+      <div class="absolute bottom-16 left-0 w-full h-32 opacity-20 pointer-events-none">
+        <div class="flex items-end justify-center gap-1.5 h-full px-6">
+          <div class="w-[2px] bg-primary/40" style="height: 35%"></div>
+          <div class="w-[2px] bg-primary/60" style="height: 60%"></div>
+          <div class="w-[2px] bg-primary" style="height: 45%"></div>
+          <div class="w-[2px] bg-secondary" style="height: 80%"></div>
+          <div class="w-[2px] bg-secondary/60" style="height: 55%"></div>
+          <div class="w-[2px] bg-primary/30" style="height: 30%"></div>
+          <div class="w-[2px] bg-primary" style="height: 70%"></div>
+          <div class="w-[2px] bg-secondary" style="height: 40%"></div>
+          <div class="w-[2px] bg-primary/50" style="height: 90%"></div>
+          <div class="w-[2px] bg-primary/20" style="height: 25%"></div>
+          <div class="w-[2px] bg-secondary/70" style="height: 50%"></div>
+          <div class="w-[2px] bg-primary" style="height: 75%"></div>
+          <div class="w-[2px] bg-primary/40" style="height: 35%"></div>
+        </div>
+      </div>
     </header>
     <main class="main-content">
-      < !-- Event Info Cards -->
-        <section class="info-section">
-          <h2 class="hero-title scroll-reveal"
-            style="font-size: 2.5rem !important; margin-bottom: 20px; background: none; -webkit-text-fill-color: #fff; text-shadow: none;">
-            Event <span style="color: var(--accent);">Info.</span></h2>
-          <div class="info-grid s">
-            < !-- Date Card (Unified Style) -->
-              <div class="info-card scroll-reveal"
-                style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);">
-                <div class="info-icon-wrapper" style="background: var(--accent); color: #000;"><span
-                    class="material-symbols-outlined" style="font-size: 32px;">calendar_month</span></div>
-                <div class="info-label">The Date</div>
-                <div class="info-value">February 13,
-                  2026</div>
-                <div class="info-sub">Friday</div>
-              </div>
-              < !-- Venue Card -->
-                <div class="info-card scroll-reveal"
-                  style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);">
-                  <div class="info-icon-wrapper" style="background: var(--accent); color: #000;"><span
-                      class="material-symbols-outlined" style="font-size: 32px;">location_on</span></div>
-                  <div class="info-label">The Venue</div>
-                  <div class="info-value">IT Lab</div>
-                  <div class="info-sub">kongunadu College of Engineering</div>
-                  <div style="margin-top: 15px;">
-                    <div
-                      style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto; display:flex; align-items:center; justify-content:center;">
-                      <span class="material-symbols-outlined text-muted">fingerprint</span>
-                    </div>
-                  </div>
-                </div>
-                < !-- Time Card (Unified Style) -->
-                  <div class="info-card scroll-reveal"
-                    style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);">
-                    <div class="info-icon-wrapper" style="background: var(--accent); color: #000;"><span
-                        class="material-symbols-outlined" style="font-size: 32px;">schedule</span></div>
-                    <div class="info-label">The Time</div>
-                    <div class="info-value">09:30 AM - 04:00 PM</div>
-                    <div class="info-sub">Full Day</div>
-                  </div>
+      <!-- Event Info Cards -->
+      <section class="info-section">
+        <h2 class="hero-title scroll-reveal"
+          style="font-size: 2.5rem !important; margin-bottom: 20px; background: none; -webkit-text-fill-color: #fff; text-shadow: none;">
+          Event <span style="color: var(--accent);">Info.</span></h2>
+        <div class="info-grid s">
+          <!-- Date Card (Unified Style) -->
+          <div class="info-card scroll-reveal"
+            style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);">
+            <div class="info-icon-wrapper" style="background: var(--accent); color: #000;"><span
+                class="material-symbols-outlined" style="font-size: 32px;">calendar_month</span></div>
+            <div class="info-label">The Date</div>
+            <div class="info-value">February 13,
+              2026</div>
+            <div class="info-sub">Friday</div>
           </div>
-        </section>
-        < !-- Registration Details -->
-          <section class="info-section" style="padding-top: 0;">
-            <h2 class="hero-title scroll-reveal"
-              style="font-size: 2.5rem !important; margin-bottom: 30px; background: none; -webkit-text-fill-color: #fff; text-shadow: none;">
-              READY TO <span style="color: #fff;">EXHIBIT?</span></h2>
-            <div class="reg-details-box scroll-reveal">
-              <div class="reg-row">
-                <div class="reg-label"><span class="material-symbols-outlined">groups</span>TEAM SIZE </div>
-                <div class="reg-value">2 - 5 Members</div>
-              </div>
-              <div class="reg-row">
-                <div class="reg-label"><span class="material-symbols-outlined">restaurant</span>INCLUSIONS </div>
-                <div class="reg-value">Food & Refreshment Included</div>
-              </div>
-              <div class="reg-row">
-                <div class="reg-label"><span class="material-symbols-outlined">emoji_events</span>REWARDS </div>
-                <div class="reg-value">Certificates for All <span
-                    style="color:var(--accent); margin:0 10px;">|</span>Cash Prizes for Winners </div>
-              </div>
-              <div class="reg-footer"><span class="material-symbols-outlined"
-                  style="vertical-align: middle; font-size: 16px;">info</span>FOR FURTHER INFO CONTACT <span
-                  style="color: #fff;">REGISTRATION TEAM</span></div>
-            </div>
-            <div class="scroll-reveal" style="margin-top: 30px;">
+          <!-- Venue Card -->
+          <div class="info-card scroll-reveal"
+            style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);">
+            <div class="info-icon-wrapper" style="background: var(--accent); color: #000;"><span
+                class="material-symbols-outlined" style="font-size: 32px;">location_on</span></div>
+            <div class="info-label">The Venue</div>
+            <div class="info-value">IT Lab</div>
+            <div class="info-sub">kongunadu College of Engineering</div>
+            <div style="margin-top: 15px;">
               <div
-                style="color: var(--accent); font-weight: 700; margin-bottom: 10px; text-transform:uppercase; letter-spacing:1px;">
-                Registration Deadline: 6.02.2026</div><a href="featured-events.html" class="btn"
-                style="background: var(--accent); color: #000; font-weight: 800; padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; box-shadow: 0 0 25px var(--accent-glow);"
-                onclick="event.preventDefault(); document.getElementById('pageTransition').style.opacity='1'; setTimeout(()=>window.location.href='featured-events.html', 500);">ENTRY
-                EVENTS </a>
+                style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto; display:flex; align-items:center; justify-content:center;">
+                <span class="material-symbols-outlined text-muted">fingerprint</span>
+              </div>
             </div>
-          </section>
+          </div>
+          <!-- Time Card (Unified Style) -->
+          <div class="info-card scroll-reveal"
+            style="border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);">
+            <div class="info-icon-wrapper" style="background: var(--accent); color: #000;"><span
+                class="material-symbols-outlined" style="font-size: 32px;">schedule</span></div>
+            <div class="info-label">The Time</div>
+            <div class="info-value">09:30 AM - 04:00 PM</div>
+            <div class="info-sub">Full Day</div>
+          </div>
+        </div>
+      </section>
+      <!-- Registration Details -->
+      <section class="info-section" style="padding-top: 0;">
+        <h2 class="hero-title scroll-reveal"
+          style="font-size: 2.5rem !important; margin-bottom: 30px; background: none; -webkit-text-fill-color: #fff; text-shadow: none;">
+          READY TO <span style="color: #fff;">EXHIBIT?</span></h2>
+        <div class="reg-details-box scroll-reveal">
+          <div class="reg-row">
+            <div class="reg-label"><span class="material-symbols-outlined">groups</span>TEAM SIZE </div>
+            <div class="reg-value">2 - 5 Members</div>
+          </div>
+          <div class="reg-row">
+            <div class="reg-label"><span class="material-symbols-outlined">restaurant</span>INCLUSIONS </div>
+            <div class="reg-value">Food & Refreshment Included</div>
+          </div>
+          <div class="reg-row">
+            <div class="reg-label"><span class="material-symbols-outlined">emoji_events</span>REWARDS </div>
+            <div class="reg-value">Certificates for All <span style="color:var(--accent); margin:0 10px;">|</span>Cash
+              Prizes for Winners </div>
+          </div>
+          <div class="reg-footer"><span class="material-symbols-outlined"
+              style="vertical-align: middle; font-size: 16px;">info</span>FOR FURTHER INFO CONTACT <span
+              style="color: #fff;">REGISTRATION TEAM</span></div>
+        </div>
+        <div class="scroll-reveal" style="margin-top: 30px;">
+          <div
+            style="color: var(--accent); font-weight: 700; margin-bottom: 10px; text-transform:uppercase; letter-spacing:1px;">
+            Registration Deadline: 6.02.2026</div><a href="featured-events.html" class="btn"
+            style="background: var(--accent); color: #000; font-weight: 800; padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; box-shadow: 0 0 25px var(--accent-glow);"
+            onclick="event.preventDefault(); document.getElementById('pageTransition').style.opacity='1'; setTimeout(()=>window.location.href='featured-events.html', 500);">ENTRY
+            EVENTS </a>
+        </div>
+      </section>
     </main>
     <footer class="footer">© 2026 kongunadu Engineering College. All rights reserved.</footer>
   </div>
