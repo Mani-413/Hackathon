@@ -381,6 +381,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <input class="form-control !py-1 text-xs" type="text" name="member${i}_dept" required placeholder="CSE">
                             </div>
                         </div>
+                        <div>
+                            <label class="label-sm">Accommodation</label>
+                            <select class="form-control !py-1 text-xs" name="member${i}_accommodation" required>
+                                <option value="">Select</option>
+                                <option value="dayscholar">Dayscholar</option>
+                                <option value="hosteller">Hosteller</option>
+                            </select>
+                        </div>
                     </div>
                 `;
                 container.appendChild(memberCard);
@@ -454,6 +462,7 @@ document.getElementById('registrationForm').addEventListener('submit', async (e)
             const email = emailEl ? emailEl.value.trim() : '';
             const rollNumber = rollEl ? rollEl.value.trim() : '';
             const department = deptEl ? deptEl.value.trim() : '';
+            const accommodation = document.querySelector(`select[name="member${i}_accommodation"]`)?.value || '';
             // Phone is removed from UI, verify if backend needs it. Sending empty string.
             const phone = '';
 
@@ -463,7 +472,8 @@ document.getElementById('registrationForm').addEventListener('submit', async (e)
                 email,
                 phone,
                 rollNumber,
-                department
+                department,
+                accommodation
             });
         }
     }
