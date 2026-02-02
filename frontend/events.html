@@ -235,126 +235,123 @@
     @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Syncopate:wght@400;700&display=swap');
   </style>
 
-  <div id="intro-layer"
-    style="position:relative; min-height:100vh; background:transparent; z-index:50; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding: 20px; text-align:center;">
-
-    <!-- Matrix/Grid Background (Dots) - Keeping subtle to mix with canvas -->
-    <div
-      style="position:absolute; inset:0; opacity:0.3; background-image: radial-gradient(#bae6fd 1.5px, transparent 1.5px); background-size: 40px 40px; pointer-events:none;">
-    </div>
-
-    <!-- TOP SECTION -->
-    <div
-      style="margin-bottom: 20px; display:flex; flex-direction:column; gap:10px; align-items:center; z-index:10; width: 100%;">
-      <div class="scramble-text-small" data-value=""
-        style="font-family:'Rajdhani', sans-serif; font-size:1.8rem; font-weight:800; color:#fff; letter-spacing:2px; text-transform:uppercase; text-align:center; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
-      </div>
-
-      <div class="scramble-text-small" data-value=""
-        style="font-family:'Rajdhani', sans-serif; font-size:1.4rem; font-weight:600; color:#cbd5e1; letter-spacing:3px; text-transform:uppercase; text-align:center; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
-      </div>
-
-      <div class="scramble-text-small" data-value=""
-        style="font-family:'Syncopate', sans-serif; font-size:1rem; font-weight:700; color:#a855f7; letter-spacing:8px; margin-top:15px; text-transform:uppercase; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
-      </div>
-    </div>
-
-    <!-- CENTER SECTION -->
-    <div
-      style="position:relative; display:flex; align-items:center; justify-content:center; margin: 10px 0; width: 100%;">
-      <!-- Layer 1: Background Year (2026) -->
-      <div id="bg-year"
-        style="position:absolute; font-family:'Orbitron', sans-serif; font-size:18vw; font-weight:900; color:#b91c1c; opacity:1; z-index:1; letter-spacing:-10px; line-height:0.8; user-select:none; white-space:nowrap; text-shadow: 0 0 60px rgba(185, 28, 28, 0.5); transform: scale(0.8);">
-
-      </div>
-
-      <!-- Layer 2: Foreground Name (TEZARIO) -->
-      <div
-        style="position:relative; z-index:10; font-family:'Orbitron', sans-serif; font-size:7vw; font-weight:900; color:#fff; letter-spacing:10px; text-transform:uppercase; text-shadow: 4px 4px 0px #000, 0 0 40px rgba(6, 182, 212, 0.8);">
-        <span class="scramble-text-main" data-value=""></span>
-      </div>
-    </div>
-
-    <!-- BOTTOM SECTION -->
-    <div style="margin-top: 60px; z-index:10; display:flex; flex-direction:column; align-items:center;">
-      <div class="scramble-text-small" data-value=""
-        style="font-family:'Syncopate', sans-serif; font-size:1.5rem; font-weight:700; color:#fff; letter-spacing:4px; text-transform:uppercase; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); text-align:center; background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent); padding: 10px 40px; border-top: 1px solid rgba(6, 182, 212, 0.5); border-bottom: 1px solid rgba(6, 182, 212, 0.5);">
-      </div>
-
-      <!-- Date Counter -->
-      <div id="intro-date"
-        style="margin-top:20px; font-family:'Space Grotesk', sans-serif; font-size:1.2rem; font-weight:bold; color:#a855f7; letter-spacing:4px;">
-        <span id="date-counter"></span>
-      </div>
-    </div>
-
-    <div
-      style="position:absolute; bottom:40px; color:#fff; font-size:0.8rem; letter-spacing:2px; opacity:0.6; animation: bounce 2s infinite 2s forwards">
-
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-      // Helper: Generic Scramble Function
-      const animateScramble = (element, speed = 30) => {
-        const targetText = element.dataset.value;
-        let iterations = 0;
-        const interval = setInterval(() => {
-          element.innerText = targetText
-            .split("")
-            .map((letter, index) => {
-              if (letter === " ") return " ";
-              if (index < iterations) return targetText[index];
-              return letters[Math.floor(Math.random() * letters.length)];
-            })
-            .join("");
-
-          if (iterations >= targetText.length) clearInterval(interval);
-          iterations += 1 / 2;
-        }, speed);
-      };
-
-      // 1. Run Top & Bottom Text Animations (Simultaneously)
-      document.querySelectorAll('.scramble-text-small').forEach(el => animateScramble(el, 20));
-
-      // 2. Run Main Title Animation (Simultaneously)
-      const mainTitle = document.querySelector('.scramble-text-main');
-      animateScramble(mainTitle, 40);
-
-      // 3. Animate Background Year Scale (Simultaneously)
-      const bgYear = document.getElementById('bg-year');
-      requestAnimationFrame(() => {
-        bgYear.style.transform = "scale(1)"; // Zooms in while text decodes
-      });
-
-      // 4. Date Code Loop (Simultaneously)
-      const dateCounter = document.getElementById('date-counter');
-      const dateTarget = "FEB 13 2026";
-      let dateIter = 0;
-      const dateInterval = setInterval(() => {
-        dateCounter.innerText = dateTarget
-          .split("")
-          .map((letter, index) => {
-            if (letter === " ") return " ";
-            if (index < dateIter) return dateTarget[index];
-            return letters[Math.floor(Math.random() * letters.length)];
-          })
-          .join("");
-        if (dateIter >= dateTarget.length) {
-          clearInterval(dateInterval);
-          dateCounter.style.color = "#a855f7";
-        }
-        dateIter += 1 / 4;
-      }, 30);
-    });
-  </script>
 
 
+
+
+  <!-- Page Transition Overlay -->
+  <div id="pageTransition"
+    class="fixed inset-0 bg-black z-[10000] pointer-events-none opacity-0 transition-opacity duration-1000"></div>
 
   <div class="container mx-auto">
+    <header class="header relative min-h-[100dvh] flex flex-col items-center justify-center pt-0 px-6 overflow-hidden"
+      style="padding-bottom: 0;">
+      <div class="absolute top-[-5%] left-[-10%] w-[70%] h-[30%] bg-primary/10 blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-[15%] right-[-10%] w-[70%] h-[30%] bg-secondary/15 blur-[120px] rounded-full"></div>
+      <div class="perspective-tilt text-center mb-6 md:mb-10 z-10">
+        <h2
+          class="text-[24px] md:text-[28px] font-tech font-bold tracking-[0.25em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 mb-3 drop-shadow-[0_0_10px_rgba(236,72,153,0.3)]">
+          Kongunadu College
+          of Engineering and Technology</h2>
+        <div class="h-[1px] w-24 bg-white/20 mx-auto mb-3"></div>
+        <h3 class="text-[16px] md:text-[18px] font-tech tracking-[0.15em] uppercase text-slate-400">Department of
+          Information Technology
+        </h3>
+      </div>
+      <div class="flex flex-col items-center text-center z-10 mb-8 md:mb-14"><span
+          class="text-[14px] md:text-[16px] font-tech font-bold tracking-[0.5em] text-secondary/80 mb-4 md:mb-6 flex items-center gap-3"><span
+            class="w-4 h-[1px] bg-secondary/40"></span>PROUDLY PRESENTS <span
+            class="w-4 h-[1px] bg-secondary/40"></span></span>
+        <div class="relative">
+          <h1
+            class="font-glitch text-5xl md:text-7xl lg:text-8xl leading-[0.85] liquid-gradient drop-shadow-[0_0_35px_rgba(6,182,212,0.4)] cyber-slice tracking-[0.1em]">
+            TEZARIO </h1>
+          <div class="mt-4"><span
+              class="font-tech font-black text-4xl md:text-6xl tracking-[0.3em] metallic-text block">2026 </span></div>
+        </div>
+        <div class="mt-8 flex items-center gap-4">
+          <div class="h-[1px] w-10 bg-primary/30"></div>
+          <p
+            class="text-[18px] md:text-[22px] font-tech font-bold tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]">
+            INTRA-COLLEGE HACKATHON</p>
+          <div class="h-[1px] w-10 bg-primary/30"></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-4 gap-4 w-full max-w-sm px-2 mb-16 z-10">
+        <!-- Days -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-days" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+              <defs>
+                <linearGradient id="cyan-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+                  <stop offset="0%" stop-color="#06b6d4"></stop>
+                  <stop offset="100%" stop-color="#a855f7"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-days"
+                class="font-tech text-xl font-bold text-white">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">DAYS</span>
+        </div>
+        <!-- Hours -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-hours" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-hours"
+                class="font-tech text-xl font-bold text-white">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">HOURS</span>
+        </div>
+        <!-- Minutes -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-minutes" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-minutes"
+                class="font-tech text-xl font-bold text-white">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest">MINS</span>
+        </div>
+        <!-- Seconds -->
+        <div class="flex flex-col items-center">
+          <div class="timer-ring mb-3"><svg class="timer-svg w-full h-full">
+              <circle class="text-slate-800/50" cx="35" cy="35" fill="transparent" r="30" stroke="currentColor"
+                stroke-width="2.5"></circle>
+              <circle id="ring-seconds" cx="35" cy="35" fill="transparent" r="30" stroke="url(#cyan-grad)"
+                stroke-dasharray="188" stroke-dashoffset="0" stroke-linecap="square" stroke-width="3"></circle>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span id="val-seconds"
+                class="font-tech text-xl font-bold text-primary">00</span></div>
+          </div><span class="text-[9px] font-tech text-slate-500 font-bold tracking-widest text-primary/60">SECS</span>
+        </div>
+      </div>
+      <!-- Background Graphic Lines -->
+      <div class="absolute bottom-16 left-0 w-full h-32 opacity-20 pointer-events-none">
+        <div class="flex items-end justify-center gap-1.5 h-full px-6">
+          <div class="w-[2px] bg-primary/40" style="height: 35%"></div>
+          <div class="w-[2px] bg-primary/60" style="height: 60%"></div>
+          <div class="w-[2px] bg-primary" style="height: 45%"></div>
+          <div class="w-[2px] bg-secondary" style="height: 80%"></div>
+          <div class="w-[2px] bg-secondary/60" style="height: 55%"></div>
+          <div class="w-[2px] bg-primary/30" style="height: 30%"></div>
+          <div class="w-[2px] bg-primary" style="height: 70%"></div>
+          <div class="w-[2px] bg-secondary" style="height: 40%"></div>
+          <div class="w-[2px] bg-primary/50" style="height: 90%"></div>
+          <div class="w-[2px] bg-primary/20" style="height: 25%"></div>
+          <div class="w-[2px] bg-secondary/70" style="height: 50%"></div>
+          <div class="w-[2px] bg-primary" style="height: 75%"></div>
+          <div class="w-[2px] bg-primary/40" style="height: 35%"></div>
+        </div>
+      </div>
+    </header>
     <main class="main-content">
       <!-- Event Info Cards -->
       <section class="info-section">
@@ -551,7 +548,7 @@
       const config = {
         starCount: 150,
         nebulaCount: 8,
-        colors: ['#00d4ff', '#0072ff', '#00c6ff', '#ffffff'] // More Blue/Cyan variants
+        colors: ['#06b6d4', '#a855f7', '#3b82f6', '#ffffff']
       }
 
         ;
@@ -630,7 +627,7 @@
 
         draw() {
           const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-          gradient.addColorStop(0, this.color + '25'); // Increased opacity from 15 to 25
+          gradient.addColorStop(0, this.color + '15'); // Very transparent hex
           gradient.addColorStop(1, 'transparent');
 
           ctx.fillStyle = gradient;
@@ -651,15 +648,7 @@
       }
 
       function animate() {
-        // Create a deep blue radial gradient for the background
-        const bgGradient = ctx.createRadialGradient(
-          width / 2, height / 2, 0,
-          width / 2, height / 2, Math.max(width, height)
-        );
-        bgGradient.addColorStop(0, '#0a192f'); // Deep blue center
-        bgGradient.addColorStop(1, '#020617'); // Darker edges
-
-        ctx.fillStyle = bgGradient;
+        ctx.fillStyle = '#020617'; // Deep space background
         ctx.fillRect(0, 0, width, height);
 
         // Draw Nebulas (Behind stars)
