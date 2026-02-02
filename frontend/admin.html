@@ -158,16 +158,40 @@
         </div>
 
         <div
-            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 16px; overflow: hidden; backdrop-filter: blur(15px);">
+            style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 16px; overflow: auto; backdrop-filter: blur(15px);">
             <table style="width: 100%; border-collapse: collapse; color: #fff;">
                 <thead>
                     <tr style="background: rgba(0, 212, 255, 0.1); border-bottom: 2px solid rgba(0, 212, 255, 0.3);">
-                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Team Leader Name
-                        </th>
-                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Email ID</th>
-                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Phone Number</th>
-                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff);">Abstract File</th>
-                        <th style="padding: 15px; text-align: center; color: var(--accent, #00d4ff);">Actions</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 150px;">
+                            Team Name</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 150px;">
+                            Team Leader</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 80px;">
+                            Size</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 200px;">
+                            Members</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 200px;">
+                            Email</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 120px;">
+                            Phone</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 100px;">
+                            Dept</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 80px;">
+                            Year</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 120px;">
+                            Roll No</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 100px;">
+                            Accom.</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 150px;">
+                            Domain</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 200px;">
+                            Problem Statement</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 100px;">
+                            Event</th>
+                        <th style="padding: 15px; text-align: left; color: var(--accent, #00d4ff); min-width: 120px;">
+                            Abstract</th>
+                        <th style="padding: 15px; text-align: center; color: var(--accent, #00d4ff); min-width: 100px;">
+                            Actions</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -178,7 +202,8 @@
     </div>
 
     <script>
-        const API_BASE_URL = 'https://tezario-backend.onrender.com/api'; // Live Render Backend
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const API_BASE_URL = isLocal ? 'http://localhost:3000/api' : 'https://tezario-backend.onrender.com/api';
         let studentsData = [];
 
         async function handleLogin(e) {
@@ -220,14 +245,39 @@
             data.forEach(student => {
                 const tr = document.createElement('tr');
                 tr.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+
+                // Format members
+                let membersStr = '';
+                if (student.teamMembers && student.teamMembers.length > 0) {
+                    membersStr = student.teamMembers.map(m => `${m.name} (${m.phone})`).join(', ');
+                }
+
                 tr.innerHTML = `
+                <td style="padding: 15px;">${student.teamName || '-'}</td>
                 <td style="padding: 15px;">${student.name || '-'}</td>
+                <td style="padding: 15px;">${student.teamSize || '1'}</td>
+                <td style="padding: 15px;">
+                    <div style="max-height: 100px; overflow-y: auto; font-size: 0.9em;">
+                        ${membersStr || '-'}
+                    </div>
+                </td>
                 <td style="padding: 15px;">${student.email || '-'}</td>
                 <td style="padding: 15px;">${student.phone || '-'}</td>
+                <td style="padding: 15px;">${student.department || '-'}</td>
+                <td style="padding: 15px;">${student.year || '-'}</td>
+                <td style="padding: 15px;">${student.rollNumber || '-'}</td>
+                <td style="padding: 15px;">${student.accommodation || '-'}</td>
+                <td style="padding: 15px;">${student.domain || '-'}</td>
+                <td style="padding: 15px;">
+                    <div style="max-height: 100px; overflow-y: auto; font-size: 0.9em;">
+                        ${student.problemStatement || '-'}
+                    </div>
+                </td>
+                <td style="padding: 15px;">${student.event || '-'}</td>
                 <td style="padding: 15px;">
                     ${student.abstractFile ?
                         `<a href="${API_BASE_URL.replace('/api', '')}${student.abstractFile}" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 5px;">
-                            <span class="material-symbols-outlined" style="font-size: 18px;">description</span> View File
+                            <span class="material-symbols-outlined" style="font-size: 18px;">description</span> View
                          </a>`
                         : '<span style="color: #64748b;">No File</span>'}
                 </td>
@@ -245,15 +295,45 @@
             if (!dataArray.length) return;
 
             let csvContent = "data:text/csv;charset=utf-8,";
-            csvContent += "Team Leader Name,Email ID,Phone Number,Abstract File Link\n";
+            // Header
+            csvContent += "Team Name,Team Leader,Team Size,Team Members,Email,Phone,Department,Year,Roll No,Accommodation,Domain,Problem Statement,Event,Abstract File Link\n";
 
             dataArray.forEach(student => {
                 const abstractLink = student.abstractFile ? `${API_BASE_URL.replace('/api', '')}${student.abstractFile}` : 'N/A';
-                const name = (student.name || '').replace(/,/g, '');
-                const email = (student.email || '').replace(/,/g, '');
-                const phone = (student.phone || '').replace(/,/g, '');
 
-                const row = `${name},${email},${phone},${abstractLink}`;
+                // Helper to escape CSV fields
+                const esc = (text) => {
+                    if (!text) return '';
+                    let str = String(text);
+                    if (str.includes(',') || str.includes('\n') || str.includes('"')) {
+                        return `"${str.replace(/"/g, '""')}"`;
+                    }
+                    return str;
+                };
+
+                // Format members for CSV
+                let membersStr = '';
+                if (student.teamMembers && student.teamMembers.length > 0) {
+                    membersStr = student.teamMembers.map(m => `${m.name} (${m.phone})`).join('; ');
+                }
+
+                const row = [
+                    esc(student.teamName),
+                    esc(student.name),
+                    esc(student.teamSize),
+                    esc(membersStr),
+                    esc(student.email),
+                    esc(student.phone),
+                    esc(student.department),
+                    esc(student.year),
+                    esc(student.rollNumber),
+                    esc(student.accommodation),
+                    esc(student.domain),
+                    esc(student.problemStatement),
+                    esc(student.event),
+                    esc(abstractLink)
+                ].join(',');
+
                 csvContent += row + "\n";
             });
 
