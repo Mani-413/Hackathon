@@ -230,21 +230,127 @@
   <canvas id="bg-canvas"></canvas>
 
   <!-- Page Transition Overlay -->
-  <div id="pageTransition"
-    style="position:fixed; inset:0; background:black; z-index:10000; pointer-events:none; animation: pageReveal 0.5s ease-out forwards;">
-  </div>
+  <!-- Cinematic Intro Overlay -->
   <style>
-    @keyframes pageReveal {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Syncopate:wght@400;700&display=swap');
   </style>
+
+  <div id="intro-layer"
+    style="position:relative; min-height:100vh; background:transparent; z-index:50; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding: 20px; text-align:center;">
+
+    <!-- Matrix/Grid Background (Dots) - Keeping subtle to mix with canvas -->
+    <div
+      style="position:absolute; inset:0; opacity:0.3; background-image: radial-gradient(#bae6fd 1.5px, transparent 1.5px); background-size: 40px 40px; pointer-events:none;">
+    </div>
+
+    <!-- TOP SECTION -->
+    <div
+      style="margin-bottom: 20px; display:flex; flex-direction:column; gap:10px; align-items:center; z-index:10; width: 100%;">
+      <div class="scramble-text-small" data-value="KONGUNADU COLLEGE OF ENGINEERING AND TECHNOLOGY"
+        style="font-family:'Rajdhani', sans-serif; font-size:1.8rem; font-weight:800; color:#fff; letter-spacing:2px; text-transform:uppercase; text-align:center; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+      </div>
+
+      <div class="scramble-text-small" data-value="DEPARTMENT OF INFORMATION TECHNOLOGY"
+        style="font-family:'Rajdhani', sans-serif; font-size:1.4rem; font-weight:600; color:#cbd5e1; letter-spacing:3px; text-transform:uppercase; text-align:center; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+      </div>
+
+      <div class="scramble-text-small" data-value="PROUDLY PRESENTS"
+        style="font-family:'Syncopate', sans-serif; font-size:1rem; font-weight:700; color:#a855f7; letter-spacing:8px; margin-top:15px; text-transform:uppercase; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+      </div>
+    </div>
+
+    <!-- CENTER SECTION -->
+    <div
+      style="position:relative; display:flex; align-items:center; justify-content:center; margin: 10px 0; width: 100%;">
+      <!-- Layer 1: Background Year (2026) -->
+      <div id="bg-year"
+        style="position:absolute; font-family:'Orbitron', sans-serif; font-size:18vw; font-weight:900; color:#b91c1c; opacity:1; z-index:1; letter-spacing:-10px; line-height:0.8; user-select:none; white-space:nowrap; text-shadow: 0 0 60px rgba(185, 28, 28, 0.5); transform: scale(0.8);">
+        2026
+      </div>
+
+      <!-- Layer 2: Foreground Name (TEZARIO) -->
+      <div
+        style="position:relative; z-index:10; font-family:'Orbitron', sans-serif; font-size:7vw; font-weight:900; color:#fff; letter-spacing:10px; text-transform:uppercase; text-shadow: 4px 4px 0px #000, 0 0 40px rgba(6, 182, 212, 0.8);">
+        <span class="scramble-text-main" data-value="TEZARIO"></span>
+      </div>
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div style="margin-top: 60px; z-index:10; display:flex; flex-direction:column; align-items:center;">
+      <div class="scramble-text-small" data-value="INTRA-COLLEGE HACKATHON"
+        style="font-family:'Syncopate', sans-serif; font-size:1.5rem; font-weight:700; color:#fff; letter-spacing:4px; text-transform:uppercase; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); text-align:center; background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent); padding: 10px 40px; border-top: 1px solid rgba(6, 182, 212, 0.5); border-bottom: 1px solid rgba(6, 182, 212, 0.5);">
+      </div>
+
+      <!-- Date Counter -->
+      <div id="intro-date"
+        style="margin-top:20px; font-family:'Space Grotesk', sans-serif; font-size:1.2rem; font-weight:bold; color:#a855f7; letter-spacing:4px;">
+        <span id="date-counter">FEB 13 2026</span>
+      </div>
+    </div>
+
+    <div
+      style="position:absolute; bottom:40px; color:#fff; font-size:0.8rem; letter-spacing:2px; opacity:0.6; animation: bounce 2s infinite 2s forwards">
+      SCROLL TO ENTER PRESENCE
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+      // Helper: Generic Scramble Function
+      const animateScramble = (element, speed = 30) => {
+        const targetText = element.dataset.value;
+        let iterations = 0;
+        const interval = setInterval(() => {
+          element.innerText = targetText
+            .split("")
+            .map((letter, index) => {
+              if (letter === " ") return " ";
+              if (index < iterations) return targetText[index];
+              return letters[Math.floor(Math.random() * letters.length)];
+            })
+            .join("");
+
+          if (iterations >= targetText.length) clearInterval(interval);
+          iterations += 1 / 2;
+        }, speed);
+      };
+
+      // 1. Run Top & Bottom Text Animations (Simultaneously)
+      document.querySelectorAll('.scramble-text-small').forEach(el => animateScramble(el, 20));
+
+      // 2. Run Main Title Animation (Simultaneously)
+      const mainTitle = document.querySelector('.scramble-text-main');
+      animateScramble(mainTitle, 40);
+
+      // 3. Animate Background Year Scale (Simultaneously)
+      const bgYear = document.getElementById('bg-year');
+      requestAnimationFrame(() => {
+        bgYear.style.transform = "scale(1)"; // Zooms in while text decodes
+      });
+
+      // 4. Date Code Loop (Simultaneously)
+      const dateCounter = document.getElementById('date-counter');
+      const dateTarget = "FEB 13 2026";
+      let dateIter = 0;
+      const dateInterval = setInterval(() => {
+        dateCounter.innerText = dateTarget
+          .split("")
+          .map((letter, index) => {
+            if (letter === " ") return " ";
+            if (index < dateIter) return dateTarget[index];
+            return letters[Math.floor(Math.random() * letters.length)];
+          })
+          .join("");
+        if (dateIter >= dateTarget.length) {
+          clearInterval(dateInterval);
+          dateCounter.style.color = "#a855f7";
+        }
+        dateIter += 1 / 4;
+      }, 30);
+    });
+  </script>
 
 
 
@@ -411,7 +517,7 @@
             <div class="reg-value">3 Members</div>
           </div>
           <div class="reg-row">
-            <div class="reg-label"><span class="material-symbols-outlined">statement</span>Problem statements</div>
+            <div class="reg-label"><span class="material-symbols-outlined"></span>Problem statements</div>
             <div class="reg-value">software and hardware </div>
           </div>
           <div class="reg-row">
@@ -553,7 +659,7 @@
       const config = {
         starCount: 150,
         nebulaCount: 8,
-        colors: ['#06b6d4', '#a855f7', '#3b82f6', '#ffffff']
+        colors: ['#00d4ff', '#0072ff', '#00c6ff', '#ffffff'] // More Blue/Cyan variants
       }
 
         ;
@@ -632,7 +738,7 @@
 
         draw() {
           const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-          gradient.addColorStop(0, this.color + '15'); // Very transparent hex
+          gradient.addColorStop(0, this.color + '25'); // Increased opacity from 15 to 25
           gradient.addColorStop(1, 'transparent');
 
           ctx.fillStyle = gradient;
@@ -653,7 +759,15 @@
       }
 
       function animate() {
-        ctx.fillStyle = '#020617'; // Deep space background
+        // Create a deep blue radial gradient for the background
+        const bgGradient = ctx.createRadialGradient(
+          width / 2, height / 2, 0,
+          width / 2, height / 2, Math.max(width, height)
+        );
+        bgGradient.addColorStop(0, '#0a192f'); // Deep blue center
+        bgGradient.addColorStop(1, '#020617'); // Darker edges
+
+        ctx.fillStyle = bgGradient;
         ctx.fillRect(0, 0, width, height);
 
         // Draw Nebulas (Behind stars)
