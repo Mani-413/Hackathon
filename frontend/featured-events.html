@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark scroll-smooth" lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -51,7 +51,25 @@
 <body
     class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300">
     <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-        <div class="layout-container flex h-full grow flex-col">
+
+        <!-- Floating Navigation -->
+        <nav class="sticky top-4 z-50 w-full max-w-[1280px] mx-auto px-4 lg:px-10 mb-[-60px]">
+            <div
+                class="bg-[#101622]/80 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+                <a href="#" class="flex items-center gap-2">
+                    <img src="media/k_logo.png" alt="Logo" class="h-10 md:h-14 w-auto object-contain">
+                    <span
+                        class="text-white font-bold text-lg tracking-tight hover:text-primary transition-colors hidden sm:block">Tezario</span>
+                </a>
+                <div class="flex items-center gap-6 text-sm font-medium text-slate-300">
+                    <a href="#about" class="hover:text-white hover:text-primary transition-colors">About</a>
+                    <a href="#prizes" class="hover:text-white hover:text-primary transition-colors">Prizes</a>
+                    <a href="#contact" class="hover:text-white hover:text-primary transition-colors">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="layout-container flex h-full grow flex-col pt-32">
 
             <main class="flex-1 flex flex-col items-center">
                 <div class="w-full max-w-[1280px] flex flex-col gap-8 py-8 lg:py-12">
@@ -61,12 +79,13 @@
                                 <h1
                                     class="text-slate-900 dark:text-white text-4xl lg:text-5xl font-black tracking-tight">
                                     Project Showcase &amp; Problem Hub</h1>
-                                <p class="text-slate-500 dark:text-[#92a4c9] text-lg">Your central hub for registration,
+                                <p class="text-slate-500 dark:text-[#92a4c9] text-lg">Your central hub for
+                                    registration,
                                     problem statements, and community innovation.</p>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                                 <div
-                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg hover:shadow-primary/10 transition-all duration-300 reveal">
+                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg transition-all duration-300 reveal hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
                                     <div class="relative h-48 overflow-hidden bg-slate-900">
                                         <img alt="Hackathon Registration"
                                             class="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-500"
@@ -78,9 +97,11 @@
                                     </div>
                                     <div class="p-6 flex flex-col grow justify-between gap-4">
                                         <div>
-                                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Register
+                                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                                                Register
                                                 for Hackathon</h3>
-                                            <p class="text-slate-500 dark:text-[#92a4c9] text-sm leading-relaxed">Join
+                                            <p class="text-slate-500 dark:text-[#92a4c9] text-sm leading-relaxed">
+                                                Join
                                                 innovators worldwide. Secure your spot today for Tezario 2026.</p>
                                         </div>
                                         <a href="index.html?event=Tezario%202026"
@@ -90,8 +111,8 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div
-                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg hover:shadow-primary/10 transition-all duration-300">
+                                <a href="software-problems.html"
+                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
                                     <div class="p-6 flex flex-col h-full gap-4">
                                         <div class="flex items-center gap-3 text-primary">
                                             <span class="material-symbols-outlined text-3xl">code_blocks</span>
@@ -102,14 +123,17 @@
                                                 class="p-3 rounded-lg bg-slate-50 dark:bg-[#232f48] border-l-4 border-primary">
                                                 <p class="text-sm font-bold dark:text-white">AI-Powered Disaster
                                                     Response</p>
-                                                <p class="text-xs text-slate-500 dark:text-slate-400">Natural Language
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">Natural
+                                                    Language
                                                     Processing Challenge</p>
                                             </div>
                                             <div
                                                 class="p-3 rounded-lg bg-slate-50 dark:bg-[#232f48] border-l-4 border-primary">
-                                                <p class="text-sm font-bold dark:text-white">Decentralized ID Protocol
+                                                <p class="text-sm font-bold dark:text-white">Decentralized ID
+                                                    Protocol
                                                 </p>
-                                                <p class="text-xs text-slate-500 dark:text-slate-400">Blockchain &amp;
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">Blockchain
+                                                    &amp;
                                                     Security Challenge</p>
                                             </div>
                                             <div
@@ -120,15 +144,15 @@
                                                     Performance Challenge</p>
                                             </div>
                                         </div>
-                                        <a href="software-problems.html"
+                                        <div
                                             class="mt-auto w-full py-2 text-primary font-bold text-sm flex items-center justify-center gap-2 hover:bg-primary/5 rounded-lg transition-colors">
                                             View All Software Challenges
                                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                                        </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div
-                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg hover:shadow-primary/10 transition-all duration-300 reveal">
+                                </a>
+                                <a href="hardware-problems.html"
+                                    class="group flex flex-col bg-white dark:bg-[#1a2333] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg transition-all duration-300 reveal hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] hover:border-orange-500">
                                     <div class="p-6 flex flex-col h-full gap-4">
                                         <div class="flex items-center gap-3 text-orange-500">
                                             <span
@@ -150,31 +174,33 @@
                                             <div class="flex items-start gap-3 p-2">
                                                 <span class="material-symbols-outlined text-orange-500">sensors</span>
                                                 <div>
-                                                    <p class="text-sm font-bold dark:text-white">Edge Computing Nodes
+                                                    <p class="text-sm font-bold dark:text-white">Edge Computing
+                                                        Nodes
                                                     </p>
                                                     <p class="text-xs text-slate-500">IoT Connectivity &amp; Power
                                                         Optimization</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="hardware-problems.html"
+                                        <div
                                             class="mt-auto w-full py-2 text-orange-500 font-bold text-sm flex items-center justify-center gap-2 hover:bg-orange-500/5 rounded-lg transition-colors">
                                             Explore Hardware Tracks
                                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                                        </a>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </section>
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 px-4 lg:px-10 mt-6">
                         <div class="lg:col-span-8 flex flex-col gap-10">
-                            <section class="reveal">
-                                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Prizes &amp; Official
+                            <section class="reveal" id="prizes">
+                                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Prizes &amp;
+                                    Official
                                     Sponsors</h2>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div
-                                        class="flex flex-col p-6 bg-primary text-white rounded-xl shadow-xl relative overflow-hidden group">
+                                        class="flex flex-col p-6 bg-primary text-white rounded-xl shadow-xl relative overflow-hidden group transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500 border border-transparent">
                                         <div
                                             class="absolute -right-4 -top-4 opacity-10 group-hover:rotate-12 transition-transform">
                                             <span class="material-symbols-outlined text-9xl">workspace_premium</span>
@@ -196,7 +222,7 @@
                                         </div>
                                     </div>
                                     <div
-                                        class="flex flex-col p-6 bg-white dark:bg-[#1a2333] border border-slate-200 dark:border-[#232f48] rounded-xl relative overflow-hidden group">
+                                        class="flex flex-col p-6 bg-white dark:bg-[#1a2333] border border-slate-200 dark:border-[#232f48] rounded-xl relative overflow-hidden group transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
                                         <span class="text-xs font-bold uppercase tracking-wider mb-2 text-slate-400">2nd
                                             Place</span>
                                         <p class="text-3xl font-black text-primary mb-4">₹3,000</p>
@@ -215,7 +241,7 @@
                                         </div>
                                     </div>
                                     <div
-                                        class="flex flex-col p-6 bg-white dark:bg-[#1a2333] border border-slate-200 dark:border-[#232f48] rounded-xl relative overflow-hidden group">
+                                        class="flex flex-col p-6 bg-white dark:bg-[#1a2333] border border-slate-200 dark:border-[#232f48] rounded-xl relative overflow-hidden group transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
                                         <span class="text-xs font-bold uppercase tracking-wider mb-2 text-slate-400">3rd
                                             Place</span>
                                         <p class="text-3xl font-black text-primary mb-4">₹2000</p>
@@ -238,7 +264,7 @@
 
                             <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Campus Atmosphere</h2>
                             <div
-                                class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg h-[450px] group">
+                                class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-[#232f48] shadow-lg h-[450px] group transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
                                 <video
                                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     autoplay loop muted playsinline>
@@ -259,27 +285,29 @@
                                 </div>
                             </div>
                             </section>
-                            <section
-                                class="bg-slate-50 dark:bg-[#1a2333] p-8 rounded-2xl border border-slate-200 dark:border-[#232f48] reveal">
-                                <h2 class="text-xl font-bold mb-4">about Tezario?</h2>
+                            <section id="about"
+                                class="bg-slate-50 dark:bg-[#1a2333] p-8 rounded-2xl border border-slate-200 dark:border-[#232f48] reveal transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
+                                <h2 class="text-xl font-bold mb-4">About Tezario?</h2>
                                 <div class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-3">
-                                    <p>Tezario 2026 is the premier stage for technological innovation. We bridge the gap
+                                    <p>Tezario 2026 is the premier stage for technological innovation. We bridge the
+                                        gap
                                         between software and hardware to build a more connected and efficient world
                                         through open-source collaboration.</p>
-                                    <p>Developers join us to solve real-world problems while competing for a significant
+                                    <p>Developers join us to solve real-world problems while competing for a
+                                        significant
                                         prize pool and networking with top-tier technology mentors.</p>
                                 </div>
                             </section>
                         </div>
                         <aside class="lg:col-span-4 flex flex-col gap-8">
                             <div
-                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] reveal">
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl border border-slate-200 dark:border-[#232f48] reveal transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
                                 <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
                                     <span class="material-symbols-outlined text-primary text-xl">schedule</span>
                                     Event Roadmap
                                 </h3>
                                 <div
-                                    class="flex flex-col gap-6 relative before:absolute before:left-5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100 dark:before:bg-[#232f48]">
+                                    class="flex flex-col gap-12 relative before:absolute before:left-5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100 dark:before:bg-[#232f48]">
                                     <div class="flex items-start gap-4 relative">
                                         <div
                                             class="size-10 rounded-full bg-primary flex items-center justify-center text-white shrink-0 z-10">
@@ -323,8 +351,9 @@
                                 </div>
                             </div>
                             <div
-                                class="bg-gradient-to-br from-[#1a2333] to-[#101622] p-6 rounded-2xl border border-primary/20 text-center reveal">
-                                <p class="text-slate-400 text-xs uppercase tracking-widest font-bold mb-4">Registration
+                                class="bg-gradient-to-br from-[#1a2333] to-[#101622] p-6 rounded-2xl border border-primary/20 text-center reveal transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500">
+                                <p class="text-slate-400 text-xs uppercase tracking-widest font-bold mb-4">
+                                    Registration
                                     Status</p>
                                 <div class="w-full">
                                     <div class="p-3 bg-white/5 rounded-lg">
@@ -340,6 +369,301 @@
                         </aside>
                     </div>
                 </div>
+
+                <!-- Event Gallery Section (Inauguration Ceremony) -->
+                <section class="reveal mb-20 overflow-hidden w-full bg-slate-900 py-16">
+                    <style>
+                        @keyframes scroll-left {
+                            0% {
+                                transform: translateX(0);
+                            }
+
+                            100% {
+                                transform: translateX(-50%);
+                            }
+                        }
+
+                        @keyframes scroll-right {
+                            0% {
+                                transform: translateX(-50%);
+                            }
+
+                            100% {
+                                transform: translateX(0);
+                            }
+                        }
+
+                        .marquee-track {
+                            display: flex;
+                            width: max-content;
+                            gap: 0;
+                        }
+
+                        .marquee-track>div {
+                            margin-right: 1.5rem;
+                        }
+
+                        .animate-scroll-left {
+                            animation: scroll-left 50s linear infinite;
+                        }
+
+                        .animate-scroll-right {
+                            animation: scroll-right 50s linear infinite;
+                        }
+
+                        .marquee-container:hover .marquee-track {
+                            animation-play-state: paused;
+                        }
+                    </style>
+
+                    <h2 class="text-4xl font-display font-bold text-white mb-12 text-center">Inauguration Ceremony
+                    </h2>
+
+                    <div class="space-y-6 marquee-container w-full">
+
+                        <!-- Row 1: Moves Left -->
+                        <div class="overflow-hidden relative w-full">
+                            <div class="marquee-track animate-scroll-left">
+                                <!-- Set 1 -->
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_1.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_2.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_3.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_4.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_5.jpg" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Duplicate -->
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_1.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_2.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_3.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_4.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_5.jpg" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Triplicate -->
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_1.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_2.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_3.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_4.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_5.jpg" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Moves Right -->
+                        <div class="overflow-hidden relative w-full">
+                            <div class="marquee-track animate-scroll-right">
+                                <!-- Set 1 -->
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_3.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_4.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_5.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_1.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_2.jpg" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Duplicate -->
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_3.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_4.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_5.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_1.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_2.jpg" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Triplicate -->
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_3.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_4.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_5.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-80 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_1.jpg" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="w-96 aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 shrink-0 border border-white/10">
+                                    <img src="media/inauguration_2.jpg" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Student Coordinators Section (Restored) -->
+                <div class="max-w-[1280px] mx-auto px-4 lg:px-10 pb-20">
+                    <section class="reveal" id="contact">
+                        <h2
+                            class="text-4xl font-bold text-slate-900 dark:text-white mb-10 text-center uppercase tracking-tight">
+                            Get in Touch</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+                            <!-- Coordinator 1 -->
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl text-center border border-slate-200 dark:border-[#232f48] shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500 group">
+                                <div
+                                    class="size-16 mx-auto bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center text-pink-600 dark:text-pink-400 mb-4">
+                                    <span class="material-symbols-outlined text-3xl">face_3</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Santhiya</h3>
+                                <a href="tel:+918148320556"
+                                    class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">+91
+                                    81483 20556</a>
+                            </div>
+
+                            <!-- Coordinator 2 -->
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl text-center border border-slate-200 dark:border-[#232f48] shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500 group">
+                                <div
+                                    class="size-16 mx-auto bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
+                                    <span class="material-symbols-outlined text-3xl">face_3</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Priyamani</h3>
+                                <a href="tel:+919629527299"
+                                    class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">+91
+                                    96295 27299</a>
+                            </div>
+
+                            <!-- Coordinator 3 -->
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl text-center border border-slate-200 dark:border-[#232f48] shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500 group">
+                                <div
+                                    class="size-16 mx-auto bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                                    <span class="material-symbols-outlined text-3xl">face</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Barath</h3>
+                                <a href="tel:+919344511849"
+                                    class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">+91
+                                    93445 11849</a>
+                            </div>
+
+                            <!-- Coordinator 4 -->
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl text-center border border-slate-200 dark:border-[#232f48] shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500 group">
+                                <div
+                                    class="size-16 mx-auto bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center text-teal-600 dark:text-teal-400 mb-4">
+                                    <span class="material-symbols-outlined text-3xl">face</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Vignesh</h3>
+                                <a href="tel:+919688505637"
+                                    class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">+91
+                                    96885 05637</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Staff Coordinators Section -->
+                    <section class="reveal mt-12 border-t border-slate-200 dark:border-[#232f48] pt-12">
+                        <h2
+                            class="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center uppercase tracking-tight">
+                            Staff Coordinators</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 max-w-4xl mx-auto">
+                            <!-- Staff 1 -->
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl text-center border border-slate-200 dark:border-[#232f48] shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500 group">
+                                <div
+                                    class="size-16 mx-auto bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                                    <span class="material-symbols-outlined text-3xl">school</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Dr. K.
+                                    Muthumanikam
+                                </h3>
+                                <a href="tel:+919443201267"
+                                    class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">+91
+                                    94432 01267</a>
+                            </div>
+
+                            <!-- Staff 2 -->
+                            <div
+                                class="bg-white dark:bg-[#1a2333] p-6 rounded-2xl text-center border border-slate-200 dark:border-[#232f48] shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:border-blue-500 group">
+                                <div
+                                    class="size-16 mx-auto bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                                    <span class="material-symbols-outlined text-3xl">school</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Mr. J. Sathiskumar
+                                </h3>
+                                <a href="tel:+919952414383"
+                                    class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">+91
+                                    99524 14383</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
             </main>
             <footer
                 class="w-full bg-white dark:bg-[#101622] border-t border-slate-200 dark:border-[#232f48] py-10 px-4 mt-auto">
